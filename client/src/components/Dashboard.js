@@ -17,15 +17,15 @@ export function Dashboard() {
         <h3>Welcome, {user?.email}!</h3>
         <div className='games-logos'>
             <button >
-              <img src='./images/zha logo.png' class="button-logos" alt='Zha Logo' onClick={() => history.push('/zha')}/>
+              <img src='./zha logo.png' class="button-logos" alt='Zha Logo' onClick={() => history.push('/zha')}/>
             </button>
           
             <button onClick={() => history.push('/chopsticks')}>
-              <img src='./images/Chopsticks logo.png' class="button-logos" alt='Chopsticks Logo' />
+              <img src='./Chopsticks logo.png' class="button-logos" alt='Chopsticks Logo' />
             </button>
 
             <button onClick={() => history.push('/thumbs')}>
-              <img src='./images/thumbs logo.png' class="button-logos" alt='Thumbs Logo' />
+              <img src='./thumbs logo.png' class="button-logos" alt='Thumbs Logo' />
             </button>
         </div>
         <br/>

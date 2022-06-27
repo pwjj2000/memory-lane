@@ -22,7 +22,7 @@ import { ThumbsMenu } from './Thumbs/Menu'
 export default function App() {
   return (
     <div>
-      <img src="./images/banner.png" class="memorylane-logo" />
+      <img src="./banner.png" class="memorylane-logo" />
       <Router>
         <AuthProvider>
           <Switch>
