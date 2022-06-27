@@ -1,0 +1,74 @@
+h3 {
+    font-family: "courier";
+}
+
+.memorylane-logo {
+  height: 130%;
+  width: 130%;
+  margin-left: -140px;
+  margin-right: 0;
+
+}
+
+.button-logos {
+    height: 320px;
+    width: 320px;
+}
+
+.button {
+    margin-left: 50px;
+}
+
+
+.games-logos > button {
+    color: black;
+    background-color: transparent;
+    border-color: transparent;
+    
+}
+
+.menu {
+    list-style-type: none;
+}
+
+.menu > li {
+    padding: 0.5em;
+}
+
+.my-choices {
+    margin: 5px
+}
+
+.enemy-choices {
+    margin: 5px
+}
+
+.my-choices > span {
+    margin: 0.5em;
+    padding: 5px;
+    border-color: red;
+    border-radius: 1px;
+    border-style: solid;
+}
+
+.enemy-choices > span {
+    margin: 0.5em;
+    padding: 5px;
+    border-color: red;
+    border-radius: 1px;
+    border-style: solid;
+}
+
+.cs-options > ul {
+    list-style-type: none;
+}
+
+.cs-options > ul > li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.cs-gameboard > div {
+    display: inline-block;
+    margin: 50px;
+}
