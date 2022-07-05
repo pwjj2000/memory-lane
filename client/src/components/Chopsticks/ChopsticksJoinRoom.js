@@ -24,6 +24,12 @@ function ChopsticksJoinRoom() {
             <br />
             <br />
             <button onClick={joinRandom}>Join Random</button>
+            <br/>
+            <br />
+            <button onClick={() => history.push('/chopsticks-new-game')} class="hidden-button">
+            <img src="./back icon.png" class="backbutton"/>
+            </button>
+            <br />
         </div>
     );
 }

@@ -10,12 +10,14 @@ import ZhaMenu from './Zha/ZhaMenu'
 import ZhaNewGame from './Zha/ZhaNewGame';
 import ZhaCreateRoom from './Zha/ZhaCreateRoom';
 import ZhaJoinRoom from './Zha/ZhaJoinRoom';
+import ZhaTutorial from './Zha/ZhaTutorial';
 import ZhaGame from './Zha/ZhaGame';
 import ChopsticksMenu from './Chopsticks/ChopsticksMenu'
 import ChopsticksCreateRoom from './Chopsticks/ChopsticksCreateRoom';
 import ChopsticksJoinRoom from './Chopsticks/ChopsticksJoinRoom';
 import ChopsticksNewGame from './Chopsticks/ChopsticksNewGame';
 import ChopsticksGame from './Chopsticks/ChopsticksGame';
+import ChopsticksTutorial from './Chopsticks/ChopsticksTutorial';
 import { ThumbsMenu } from './Thumbs/Menu'
 
 
@@ -35,6 +37,7 @@ export default function App() {
             <PrivateRoute exact path="/zha-new-game" component={ZhaNewGame} />
             <PrivateRoute exact path="/zha-create-room" component={ZhaCreateRoom} />
             <PrivateRoute exact path="/zha-join-room" component={ZhaJoinRoom} />
+            <PrivateRoute exact path="/zha-tutorial" component={ZhaTutorial} />
             <PrivateRoute exact path="/zha-game" component={ZhaGame} />
 
             <PrivateRoute exact path="/chopsticks" component={ChopsticksMenu} />
@@ -42,6 +45,7 @@ export default function App() {
             <PrivateRoute exact path="/chopsticks-create-room" component={ChopsticksCreateRoom} />
             <PrivateRoute exact path="/chopsticks-join-room" component={ChopsticksJoinRoom} />
             <PrivateRoute exact path="/chopsticks-game" component={ChopsticksGame} />
+            <PrivateRoute exact path="/chopsticks-tutorial" component ={ChopsticksTutorial} />
 
             <PrivateRoute exact path="/thumbs" component={ThumbsMenu} />
           </Switch>

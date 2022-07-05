@@ -19,7 +19,7 @@ export function Dashboard() {
             <button >
               <img src='./zha logo.png' class="button-logos" alt='Zha Logo' onClick={() => history.push('/zha')}/>
             </button>
-          
+             
             <button onClick={() => history.push('/chopsticks')}>
               <img src='./Chopsticks logo.png' class="button-logos" alt='Chopsticks Logo' />
             </button>
@@ -29,7 +29,10 @@ export function Dashboard() {
             </button>
         </div>
         <br/>
-        <button onClick={handleSignOut}>Sign out</button>
+        <br/> 
+        <button onClick={handleSignOut} class="hidden-button">
+          <img src="./signout.png" class="signout-button"/>
+        </button>
       </div>
     )
 }

@@ -179,57 +179,91 @@ function ZhaGame() {
         if (!waiting && !error && confirmed) {
             return (
                 <>
+                <body>
+                <div>
+                <h4>You are {player === 1 ? "Player 1" : "Player 2"}</h4>
+                {attacker ? <img src= "./attacking.png" class="zha-attacking"/> : <img src="./defending.png" class="zha-attacking"/>}
+                <div class="cs-lives">
+                <h5>Lives:</h5>
+                    {player === 1 ? <b>you:</b>: <b>opponent:</b>} 
+                    {lives1 === 2 ? <img src="./two heart.png"/>
+                    : lives1 === 1 ? <img src="./heart.png"/>
+                    : ""}
+                    <br />
+                    {player === 2 ? <b>you:</b> : <b>opponent:</b>} 
+                    {lives2 === 2 ? <img src="./two heart.png"/>
+                    : lives2 === 1 ? <img src="./heart.png"/>
+                    : ""}
+                    <br/>
+                </div>
+                </div>
+                
+                <h5>Make your choice:</h5>
                     <div className='zha-game'>
-                        <button onClick={() => choose("Plane")}>
-                            <img src='' alt='Plane' />
+                        <button onClick={() => choose("Plane")} class="hidden-button">
+                            <img src='./plane icon.png' class="zha-choice-plane" alt='Plane' />
                         </button>
     
-                        <button onClick={() => choose("Human")}>
-                            <img src='' alt='Human' />
+                        <button onClick={() => choose("Human")} class="hidden-button">
+                            <img src='./human icon.png' class="zha-choice-human" alt='Human' />
                         </button>
     
-                        <button onClick={() => choose("Bomb")}>
-                            <img src='' alt='Bomb' />
+                        <button onClick={() => choose("Bomb")} class="hidden-button">
+                            <img src='./bomb icon.png' class="zha-choice-bomb" alt='Bomb' />
                         </button>
                     </div>
                 
-                    <br/>
     
                     <div className='my-choices'>
-                        <span>Your Choice 1: {choice1}</span>
-                        <span>Your Choice 2: {choice2}</span>
+                        <h5>Your choices:</h5>
+                        <span>{choice1}</span>
+                        <span>{choice2}</span>
                     </div>
     
                     <br/>
-                    {attacker ? "attacker":"not attacker"}
-
-                    <br />
-                    Player 1 Lives {player === 1 ? "(YOU)" : ""}: {lives1}
-                    <br />
-                    Player 2 Lives {player === 2 ? "(YOU)" : ""}: {lives2}
-                    <br />
-
-                    <div className='my-choices'>
-                        <span>Player 1 Choice 1 {player === 1 ? "(YOU)" : ""}: {chosen1A}</span>
-                        <span>Player 1 Choice 2 {player === 1 ? "(YOU)" : ""}: {chosen1B}</span>
-                    </div>
-
-                    <div className='my-choices'>
-                        <span>Player 2 Choice 1 {player === 2 ? "(YOU)" : ""}: {chosen2A}</span>
-                        <span>Player 2 Choice 2 {player === 2 ? "(YOU)" : ""}: {chosen2B}</span>
-                    </div>
-
-                    {result1}
-                    <br />
-                    {result2}
-                    <br />
-                    {result3}
-                    <br />
-                    {result4}
                     <div>
-                        {locked ? null : <button onClick={() => submitChoices()}>Lock In</button>}
-                        {locked ? null : <button onClick={() => resetChoices()}>Reset</button>}
+                        {locked ? null : <button onClick={() => submitChoices()} class="hidden-button">
+                            <img src="./lockin.png" class="zha-lockin" alt="lock in"/>
+                            </button>}
+                        {locked ? null : <button onClick={() => resetChoices()} class="hidden-button">
+                            <img src="./reset.png" class="zha-reset" alt="reset"/>
+                            </button>}
                     </div>
+
+                    <br />
+                    
+
+                    <h5>Result:</h5>
+                    <div class = "zha-result">
+                     {player === 1 ? <b>you:</b> : <b>opponent:</b>}
+                        <span>{chosen1A}</span>
+                        <span>{chosen1B}</span>
+                    </div>
+                    <br/>
+
+                    <div className='zha-result'>
+                    {player === 2 ? <b>you:</b> : <b>opponent:</b>}
+                        <span>{chosen2A}</span>
+                        <span>{chosen2B}</span>
+                    </div>
+                    <br/>
+                    <h5>Log:</h5>
+                    
+                    <div class='zha-log'>
+                        {result1}
+                        <br />
+                        {result2}
+                        <br />
+                        {result3}
+                        <br />
+                        {result4}
+                    </div>
+
+                    <br/>
+                    <br/>
+
+                   </body>
+                  
                 </>
             ) 
         } else {

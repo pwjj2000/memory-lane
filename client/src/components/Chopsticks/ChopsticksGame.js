@@ -3,8 +3,8 @@ import {io} from 'socket.io-client'
 import {useEffect, useState} from 'react'
 import "../../styles.css"
 
-// const socket = io.connect("http://localhost:3001")
-const socket = io.connect("https://memorylane-app.herokuapp.com/")
+const socket = io.connect("http://localhost:3001")
+//const socket = io.connect("https://memorylane-app.herokuapp.com/")
 
 function ChopsticksGame() {
     //Router Stuff
@@ -252,7 +252,9 @@ function ChopsticksGame() {
     function LELButton() {
         if (showLEL) {
             return (
-                <button onClick={() => LEL()}>Left attacks Enemy Left</button>
+                <button onClick={() => LEL()} class="hidden-button">
+                    <img src="./LEL.png"/>
+                </button>
             )
         } else {
             return null
@@ -262,7 +264,9 @@ function ChopsticksGame() {
     function LERButton() {
         if (showLER) {
             return (
-                <button onClick={() => LER()}>Left attacks Enemy Right</button>
+                <button onClick={() => LER()} class="hidden-button">
+                    <img src="./LER.png" class="cs-LER"/>
+                </button>
             )
         } else {
             return null
@@ -272,7 +276,9 @@ function ChopsticksGame() {
     function LRButton() {
         if (showLR) {
             return (
-                <button onClick={() => LR()}>Left attacks Right</button>
+                <button onClick={() => LR()} class="hidden-button">
+                    <img src="./LR.png" class="cs-LR"/>
+                </button>
             )
         } else {
             return null
@@ -282,7 +288,9 @@ function ChopsticksGame() {
     function RELButton() {
         if (showREL) {
             return (
-                <button onClick={() => REL()}>Right attacks Enemy Left</button>
+                <button onClick={() => REL()} class="hidden-button">
+                    <img src="./LEL.png"/>
+                </button>
             )
         } else {
             return null
@@ -292,7 +300,9 @@ function ChopsticksGame() {
     function RERButton() {
         if (showRER) {
             return (
-                <button onClick={() => RER()}>Right attacks Enemy Right</button>
+                <button onClick={() => RER()} class="hidden-button">
+                    <img src="./LER.png" class="cs-LER"/>
+                </button>
             )
         } else {
             return null
@@ -302,7 +312,9 @@ function ChopsticksGame() {
     function RLButton() {
         if (showRL) {
             return (
-                <button onClick={() => RL()}>Right attacks Left</button>
+                <button onClick={() => RL()} class="hidden-button">
+                    <img src="./RL.png" class="cs-LR" />
+                </button>
             )
         } else {
             return null
@@ -312,7 +324,9 @@ function ChopsticksGame() {
     function SplitButton() {
         if (showSplit) {
             return (
-                <button onClick={() => Split()}>Split</button>
+                <button onClick={() => Split()} class="hidden-button">
+                    <img src="./split.png" />
+                </button>
             )
         } else {
             return null
@@ -323,22 +337,34 @@ function ChopsticksGame() {
         if (attacker) {
             return (
                 <div>
-                    <h5>Options</h5>
+                    <h3>Choose an option:</h3>
                     <div className='cs-options'>
+                        <div class="cs-left">
+                        <h4>Using your left:</h4>
                         <ul>
                             <li><LELButton/></li>
                             <li><LERButton/></li>
                             <li><LRButton/></li>
                         </ul>
+                        </div>
+                        <br/>
+                        <div class="cs-right">
+                        <h4>Using your right:</h4>
                         <ul>
                             <li><RELButton/></li>
                             <li><RERButton/></li>
                             <li><RLButton/></li>
                         </ul>
+                        </div>
+                        <br/>
+                        <div class="cs-both">
+                        <h4>Using both:</h4>
                         <ul>
                             <li><SplitButton/></li>
                         </ul>
+                        </div>
                     </div>
+                    <br/>
                 </div>
             )
         } else {
@@ -350,19 +376,44 @@ function ChopsticksGame() {
         if (!waiting && !error && confirmed) {
             return (
                 <>
-                    {attacker ? "attacker":"not attacker"}
+                <h4>Welcome,{player === 1 ? "Player 1" : "Player 2"}</h4>
+                    {attacker ? <img src="./attacking.png"/> : <img src="./defending.png" />}
+                    <br/>
+                    {attacker ?  "" : "Waiting for your opponent to make their move..."} 
+                    
                     <br/>
 
                     <div className='cs-gameboard'>
+                        <h3>Gameboard:</h3>
                         <div className='your-chopsticks'>
-                            <p>PLAYER 1 {player === 1 ? "(YOU)" : ""}</p>
-                            <p>Player 1 Left: {left1 === 0 ? "DEAD" : left1}</p>
-                            <p>Player 1 Right: {right1 === 0 ? "DEAD" : right1}</p>
+                            <span class="cs-box-border">{player === 1 ? <b>you:  </b> : <b>opponent:  </b>}</span>
+                            <span> {left1 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
+                            : left1 === 1 ? <img src="./one finger.png" class="cs-icon"/>
+                            : left1 === 2 ? <img src="./two finger.png" class="cs-icon"/>
+                            : left1 === 3 ? <img src="./three finger.png" class="cs-icon"/>
+                            : <img src="./four finger.png" class="cs-icon"/>}
+                            </span>
+                            <span> {right1 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
+                            : right1 === 1 ? <img src="./one finger.png" class="cs-icon"/>
+                            : right1 === 2 ? <img src="./two finger.png" class="cs-icon"/>
+                            : right1 === 3 ? <img src="./three finger.png" class="cs-icon"/>
+                            : <img src="./four finger.png" class="cs-icon"/>}
+                            </span>
+                            <br/>
                         </div>
                         <div className='enemy-chopsticks'>
-                            <p>PLAYER 2 {player === 2 ? "(YOU)" : ""}</p>
-                            <p>Player 2 Left: {left2 === 0 ? "DEAD" : left2}</p>
-                            <p>Player 2 Right: {right2 === 0 ? "DEAD" : right2}</p>
+                            <span> {player === 2 ? <b>you: </b> : <b>opponent:</b>}</span>
+                            <span>{left2 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
+                            : left2 === 1 ? <img src="./one finger.png" class="cs-icon"/>
+                            : left2 === 2 ? <img src="./two finger.png" class="cs-icon"/>
+                            : left2 === 3 ? <img src="./three finger.png" class="cs-icon"/>
+                            : <img src="./four finger.png" class="cs-icon"/>}
+                            </span>
+                            <span> {right2 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
+                            : right2 === 1 ? <img src="./one finger.png" class="cs-icon"/>
+                            : right2 === 2 ? <img src="./two finger.png" class="cs-icon"/>
+                            : right2 === 3 ? <img src="./three finger.png" class="cs-icon"/>
+                            : <img src="./four finger.png" class="cs-icon"/>}</span>
                         </div>
                     </div>
                       

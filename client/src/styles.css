@@ -1,5 +1,61 @@
+h4 {
+    font-family: "courier new";
+}
+
+
 h3 {
     font-family: "courier";
+}
+
+h2 {
+    font-family: "verdana";
+    
+}
+
+.backbutton {
+    width: 180px;
+    height:auto;
+}
+
+.tutorial-game-logo {
+    float: right;
+
+}
+
+.signout-button {
+    width: 230px;
+    height: auto;
+    margin-left: 80px;
+}
+
+.join-room-button {
+    float: left;
+    margin-left: 750px;
+}
+
+.create-room-button {
+    float: left;
+    margin-left: 50px;
+}
+
+.hidden-button {
+    width: 0;
+    height: 0;
+    padding: 0;
+}
+
+.menu-logo {
+    height: 350px;
+    width: 350px;
+    float: left;
+    margin-top: 40px;
+}
+
+.new-game-menu {
+    height: 240px;
+    width: 240px;
+    float: left;
+    margin-left: 420px;
 }
 
 .memorylane-logo {
@@ -10,6 +66,65 @@ h3 {
 
 }
 
+.zha-attacking {
+    height: 80px;
+    width: auto;
+    position: relative;
+    left: 200px;
+    top: 170px;
+}
+
+.zha-tutorial-icon > img {
+    width: 190px;
+    height: auto;
+}
+
+.zha-choice-human {
+    height: 320px;
+    width: 320px;
+    margin-left: 450px;
+}
+
+.zha-choice-plane {
+    height: 320px;
+    width: 320px;
+}
+
+.zha-choice-bomb {
+    height: 320px;
+    width: 320px;
+    margin-left: 880px;
+}
+
+.zha-lockin {
+    height: auto;
+    width: 200px;
+}
+
+.zha-reset {
+    height: auto;
+    width: 200px;
+    float: left;
+    margin-left: 225px;
+}
+
+.zha-log {
+    border-radius: 7px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+}
+
+.zha-result > span {
+    border-radius: 5px;
+    border-color: darkblue;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+    margin: 5px;
+}
+
+
 .button-logos {
     height: 320px;
     width: 320px;
@@ -17,6 +132,8 @@ h3 {
 
 .button {
     margin-left: 50px;
+    background-color: transparent;
+    
 }
 
 
@@ -36,7 +153,7 @@ h3 {
 }
 
 .my-choices {
-    margin: 5px
+    margin: 5px;
 }
 
 .enemy-choices {
@@ -47,7 +164,7 @@ h3 {
     margin: 0.5em;
     padding: 5px;
     border-color: red;
-    border-radius: 1px;
+    border-radius: 3px;
     border-style: solid;
 }
 
@@ -59,16 +176,115 @@ h3 {
     border-style: solid;
 }
 
-.cs-options > ul {
+.enemy-chopsticks {
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding: 30px;
+}
+
+.your-chopsticks {
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding: 30px;
+}
+
+.cs-icon {
+    width: 100px;
+    height: auto;
+    position: relative;
+    top: 40px;
+}
+
+.cs-tutorial-icon > img {
+    width: 100px;
+    height: auto;
+}
+
+.cs-lives > img {
+    width: 50px;
+    height: auto;
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+.cs-options > div > ul {
     list-style-type: none;
 }
 
-.cs-options > ul > li {
+.cs-options > div > ul > li {
     display: inline-block;
-    margin: 5px;
+    margin: 40px;
+}
+
+.cs-options > div {
+    border-radius: 8px;
+    border-color: darkblue;
+    border-width: 3px;
+    border-style: solid;
+    padding: 15px;
+    padding-left: 50px;
+}
+
+.cs-options > div.cs-left {
+    background-color: aliceblue;
+}
+
+.cs-options > div.cs-right {
+    background-color: pink;
+}
+
+.cs-options > div.cs-both {
+    background-color: lightgray;
+}
+
+.cs-LER {
+    position: relative;
+    left: 230px;
+}
+
+.cs-LR {
+    position: relative;
+    left: 460px;
 }
 
 .cs-gameboard > div {
     display: inline-block;
     margin: 50px;
 }
+
+:hover.create-room-button {
+    background-color: #e5e5e5;
+    text-decoration: none;
+}
+
+:hover.join-room-button {
+    background-color: #e5e5e5;
+    text-decoration: none;
+}
+
+:hover.signout-button {
+    box-shadow: 0 0 5px brown;
+    transition-duration: 0.4s;
+}
+
+:hover.button-logos {
+    opacity: 30%;
+    transition-duration: 0.4s;
+}
+
+:hover.backbutton {
+    opacity: 30%;
+    transition-duration: 0.4s;
+    
+}
+
+:hover.menu-button {
+    opacity: 30%;
+    transition-duration: 0.4s;
+}
+

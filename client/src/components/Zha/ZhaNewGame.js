@@ -5,11 +5,28 @@ function ZhaNewGame() {
 
     return (
         <div className="Zha">
-            <h2>Zha</h2>
-            <button onClick={() => history.push('/zha-create-room')}>Create Room</button>
-            <br />
-            <br />
-            <button onClick={() => history.push('/zha-join-room')}>Join Room</button>
+            <img src="./zha logo.png" class="new-game-menu"/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <button class="hidden-button">
+                <img src='./create room transparent.png' class="create-room-button" alt="create room" onClick={() => history.push('/zha-create-room')}/>
+            </button>
+            <button class="hidden-button" onClick={() => history.push('/zha-join-room')}>
+                <img src="./join room.png" class="join-room-button" alt="join room" />
+            </button>
+            <br/>
+            <br/>
+            <br/>
+            <button onClick={() => history.push('/zha')} class="hidden-button">
+            <img src="./back icon.png" class="backbutton"/>
+            </button>
+            <br/>
+            <br/>
         </div>
     );
 }

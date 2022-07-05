@@ -6,6 +6,7 @@ export function ThumbsMenu() {
     const history = useHistory();
     return (
         <div>
+            <img src='./thumbs logo.png' class='menu-logo'/>
             <h2>Thumbs</h2>
             <ul className='menu'>
                 <li>
@@ -19,9 +20,11 @@ export function ThumbsMenu() {
                 <li>
                     <button>Leaderboard</button>
                 </li>
+            <br/>
+            <br/>
 
                 <li>
-                    <button onClick={() => history.push('/')}>Back</button>
+                    <button onClick={() => history.push('/')} class="backbutton">Back</button>
                 </li>
             </ul>
         </div>

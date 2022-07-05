@@ -14,8 +14,8 @@ const {connectedUsers, initializeChoices, userConnected, zhaMakeMove, moves, cho
 
 const io = new Server(server, {
     cors: {
-        //origin: "http://localhost:3000", 
-        origin: "https://the-awesome-pwjj2000-site.netlify.app",
+        origin: "http://localhost:3000", 
+        //origin: "https://the-awesome-pwjj2000-site.netlify.app",
         methods: ["GET", "POST"]
     }
 });

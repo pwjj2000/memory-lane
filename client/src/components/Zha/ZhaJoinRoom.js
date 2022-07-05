@@ -24,6 +24,12 @@ function ZhaJoinRoom() {
             <br />
             <br />
             <button onClick={joinRandom}>Join Random</button>
+            <br />
+            <br />
+            <button onClick={() => history.push('/zha-new-game')} class="hidden-button">
+            <img src="./back icon.png" class="backbutton"/>
+            </button>
+            <br />
         </div>
     );
 }
