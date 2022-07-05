@@ -18,7 +18,11 @@ import ChopsticksJoinRoom from './Chopsticks/ChopsticksJoinRoom';
 import ChopsticksNewGame from './Chopsticks/ChopsticksNewGame';
 import ChopsticksGame from './Chopsticks/ChopsticksGame';
 import ChopsticksTutorial from './Chopsticks/ChopsticksTutorial';
-import { ThumbsMenu } from './Thumbs/Menu'
+import ThumbsMenu from './Thumbs/ThumbsMenu';
+import ThumbsCreateRoom from './Thumbs/ThumbsCreateRoom';
+import ThumbsJoinRoom from './Thumbs/ThumbsJoinRoom';
+import ThumbsNewGame from './Thumbs/ThumbsNewGame';
+import ThumbsGame from './Thumbs/ThumbsGame';
 
 
 export default function App() {
@@ -48,6 +52,10 @@ export default function App() {
             <PrivateRoute exact path="/chopsticks-tutorial" component ={ChopsticksTutorial} />
 
             <PrivateRoute exact path="/thumbs" component={ThumbsMenu} />
+            <PrivateRoute exact path="/thumbs-new-game" component={ThumbsNewGame} />
+            <PrivateRoute exact path="/thumbs-create-room" component={ThumbsCreateRoom} />
+            <PrivateRoute exact path="/thumbs-join-room" component={ThumbsJoinRoom} />
+            <PrivateRoute exact path="/thumbs-game" component={ThumbsGame} />
           </Switch>
         </AuthProvider>
       </Router>

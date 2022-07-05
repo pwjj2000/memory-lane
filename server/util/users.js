@@ -1,14 +1,17 @@
 const connectedUsers = {};
 const choices = {};
-const moves = {
-    "rock": "scissor",
-    "paper": "rock",
-    "scissor": "paper"
-};
+
 
 const initializeChoices = (roomId) => {
     choices[roomId] = []
     for (let i = 0; i < 4; i++) {
+        choices[roomId][i] = ""
+    }
+}
+
+const initializeChoicesAlt = (roomId) => {
+    choices[roomId] = []
+    for (let i = 0; i < 5; i++) {
         choices[roomId][i] = ""
     }
 }
@@ -35,6 +38,20 @@ const zhaMakeMove = (choice1, choice2, player, room) => {
     }
 }
 
-module.exports = {connectedUsers, initializeChoices, userConnected, makeMove, zhaMakeMove, moves, choices};
+const thumbsMakeMove = (choice1, choice2, player, room, number) => {
+    if (choices[room]) {
+        if (number !== null) {
+            choices[room][4] = number
+        }
+        if (player === 1) {// Store Player 1 choices
+            choices[room][0] = choice1
+            choices[room][1] = choice2
+        } else {// Store Player 2 choices
+            choices[room][2] = choice1
+            choices[room][3] = choice2
+        }
+    }
+}
 
-//{choice1, choice2, player, attacker, lives, room}
+
+module.exports = {connectedUsers, initializeChoices, initializeChoicesAlt, userConnected, makeMove, zhaMakeMove, thumbsMakeMove, choices};
