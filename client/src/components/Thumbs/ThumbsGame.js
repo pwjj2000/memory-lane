@@ -2,6 +2,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import {io} from 'socket.io-client'
 import {useEffect, useState} from 'react'
 import "../../styles.css"
+import { supabase } from '../../supabase'
 
   const socket = io.connect("http://localhost:3001")
  // const socket = io.connect("https://memorylane-app.herokuapp.com/")
@@ -22,6 +23,8 @@ function ThumbsGame() {
     const [room, setRoom] = useState(location.state.roomID)
 
     //Game
+    const [overall, setOverall] = useState(null)
+    const [score, setScore] = useState(null)
     const [player, setPlayer] = useState(1)
     const [choice1, setChoice1] = useState("") //raised, lowered, DEAD
     const [choice2, setChoice2] = useState("") //raised, lowered, DEAD
@@ -31,6 +34,7 @@ function ThumbsGame() {
     const [lives2, setLives2] = useState(2) 
     const [total, setTotal] = useState(4)
     const [locked, setLocked] = useState(false)
+    const [end, setEnd] = useState(false)
 
     const [thumb1A, setThumb1A] = useState("")
     const [thumb1B, setThumb1B] = useState("")
@@ -40,7 +44,9 @@ function ThumbsGame() {
     const [thumbsRaised, setThumbsRaised] = useState(null)
     const [resultNumber, setResultNumber] = useState(null)
 
-    
+    useEffect(() => {
+        getScore()
+    }, [])
 
 
 
@@ -88,6 +94,15 @@ function ThumbsGame() {
             const winner = data.winner
             const winMessage = "Player " + winner + " wins. Returning to Create/Join Room..."
             setReceived(winMessage)
+            setEnd(true)
+            if (player === 1 && winner === 1) {
+                console.log("p1w1")
+                updateScore()
+            }
+            if (player === 2 && winner === 2) {
+                console.log("p2w2")
+                updateScore()
+            }
         })
 
         socket.on("reset", () => {
@@ -110,9 +125,33 @@ function ThumbsGame() {
             updateAttacker()
         })
 
+        return () => {
+            socket.removeAllListeners();
+        };
 
-    }, [updateAttacker, resetChoices])
+    }, [updateAttacker, resetChoices, end])
     
+    async function getScore() {
+        const { data } = await supabase
+            .from('leaderboard')
+            .select()
+            .eq('id', supabase.auth.user().id)
+        setOverall(data[0].overall)
+        setScore(data[0].thumbs)
+    }
+
+    async function updateScore() {
+        const { data, error } = await supabase
+            .from('leaderboard')
+            .update({ overall: overall + 1 })
+            .eq('id', supabase.auth.user().id) //update overall score
+        const { data1, error1 } = await supabase
+            .from('leaderboard')
+            .update({ thumbs: score + 1 })
+            .eq('id', supabase.auth.user().id) //update zha score
+        setOverall(overall + 1)
+        setScore(score + 1)
+    }
 
     function handleConfirm() {
         if (type === "create") {
@@ -327,7 +366,7 @@ function ThumbsGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed) {
+        if (!waiting && !error && confirmed && !end) {
             return (
                 <>
                     <ChooseSection />
@@ -420,6 +459,13 @@ function ThumbsGame() {
 
     return (
         <>
+            {supabase.auth.user().id}
+            <br />
+            Player: {player}
+            <br />
+            Overall: {overall}
+            <br />
+            Score: {score}
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>

@@ -186,10 +186,12 @@ io.on("connection", (socket) => {
            
             if (newLives1 === 0) {
                 const player = 1
+                console.log("P1 loses")
                 io.to(room).emit("zha-end", {player})
             } 
             if (newLives2 === 0) {
                 const player = 2
+                console.log("P2 loses")
                 io.to(room).emit("zha-end", {player})
             }
             initializeChoices(room)

@@ -28,6 +28,8 @@ export function Dashboard() {
               <img src='./thumbs logo.png' class="button-logos" alt='Thumbs Logo' />
             </button>
         </div>
+
+        <button onClick={() => history.push('/overall-leaderboard')}>Leaderboard</button>
         <br/>
         <br/> 
         <button onClick={handleSignOut} class="hidden-button">

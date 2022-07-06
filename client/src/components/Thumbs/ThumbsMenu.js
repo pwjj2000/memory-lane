@@ -17,7 +17,7 @@ export default function ThumbsMenu() {
                 </li>
 
                 <li>
-                    <button>Leaderboard</button>
+                    <button onClick={() => history.push('/thumbs-leaderboard')}>Leaderboard</button>
                 </li>
 
                 <li>

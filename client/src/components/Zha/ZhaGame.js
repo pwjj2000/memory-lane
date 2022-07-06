@@ -2,6 +2,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import {io} from 'socket.io-client'
 import {useEffect, useState} from 'react'
 import "../../styles.css"
+import { supabase } from '../../supabase'
 
  const socket = io.connect("http://localhost:3001")
  //const socket = io.connect("https://memorylane-app.herokuapp.com/")
@@ -22,6 +23,8 @@ function ZhaGame() {
     const [room, setRoom] = useState(location.state.roomID)
 
     //Game
+    const [overall, setOverall] = useState(null)
+    const [score, setScore] = useState(null)
     const [choice1, setChoice1] = useState("")
     const [choice2, setChoice2] = useState("")
     const [player, setPlayer] = useState(1)
@@ -29,6 +32,7 @@ function ZhaGame() {
     const [lives1, setLives1] = useState(2)
     const [lives2, setLives2] = useState(2) 
     const [locked, setLocked] = useState(false)
+    const [end, setEnd] = useState(false)
 
     const [chosen1A, setChosen1A] = useState("")
     const [chosen1B, setChosen1B] = useState("")
@@ -38,6 +42,11 @@ function ZhaGame() {
     const [result2, setResult2] = useState("")
     const [result3, setResult3] = useState("")
     const [result4, setResult4] = useState("")
+
+
+    useEffect(() => {
+        getScore()
+    }, [])
 
     //Socket
     useEffect(() => {
@@ -98,20 +107,50 @@ function ZhaGame() {
             resetChoices()
         })
 
-        // socket.on("change-lives", (data) => {
-        //     setLives(data.newLives)
-        // })
-
         socket.on("zha-end", (data) => {
             const loser = data.player
             const winner = loser === 1 ? 2 : 1
+            console.log(player)
+            console.log(winner)
             const winMessage = "Player " + loser + " ran out of lives. Player " + winner + " wins. Returning to Create/Join Room..."
             setReceived(winMessage)
-
+            setEnd(true)
+            if (player === 1 && winner === 1) {
+                console.log("p1w1")
+                updateScore()
+            }
+            if (player === 2 && winner === 2) {
+                console.log("p2w2")
+                updateScore()
+            }
         })
 
-    }, [updateAttacker, resetChoices])
+        return () => {
+            socket.removeAllListeners();
+        };
+    }, [updateAttacker, resetChoices, end])
     
+    async function getScore() {
+        const { data } = await supabase
+            .from('leaderboard')
+            .select()
+            .eq('id', supabase.auth.user().id)
+        setOverall(data[0].overall)
+        setScore(data[0].zha)
+    }
+
+    async function updateScore() {
+        const { data, error } = await supabase
+            .from('leaderboard')
+            .update({ overall: overall + 1 })
+            .eq('id', supabase.auth.user().id) //update overall score
+        const { data1, error1 } = await supabase
+            .from('leaderboard')
+            .update({ zha: score + 1 })
+            .eq('id', supabase.auth.user().id) //update zha score
+        setOverall(overall + 1)
+        setScore(score + 1)
+    }
 
     function handleConfirm() {
         if (type === "create") {
@@ -176,7 +215,7 @@ function ZhaGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed) {
+        if (!waiting && !error && confirmed && !end) {
             return (
                 <>
                 <body>
@@ -382,6 +421,13 @@ function ZhaGame() {
 
     return (
         <>
+            {supabase.auth.user().id}
+            <br />
+            Player: {player}
+            <br />
+            Overall: {overall}
+            <br />
+            Score: {score}
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>

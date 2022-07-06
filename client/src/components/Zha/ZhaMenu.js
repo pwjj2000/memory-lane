@@ -25,7 +25,7 @@ export default function ZhaMenu() {
                 </li>
 
                 <li>
-                    <button class="hidden-button">
+                    <button onClick={() => history.push('/zha-leaderboard')} class="hidden-button">
                         <img src="./leaderboard.png" class="menu-button"/>
                     </button>
                 </li>

@@ -2,6 +2,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import {io} from 'socket.io-client'
 import {useEffect, useState} from 'react'
 import "../../styles.css"
+import { supabase } from '../../supabase'
 
 const socket = io.connect("http://localhost:3001")
 //const socket = io.connect("https://memorylane-app.herokuapp.com/")
@@ -22,12 +23,15 @@ function ChopsticksGame() {
     const [room, setRoom] = useState(location.state.roomID)
 
     //Game
+    const [overall, setOverall] = useState(null)
+    const [score, setScore] = useState(null)
     const [player, setPlayer] = useState(1)
     const [attacker, setAttacker] = useState(true)
     const [left1, setLeft1] = useState(1) //Left Hand
     const [right1, setRight1] = useState(1) //Right Hand
     const [left2, setLeft2] = useState(1)
     const [right2, setRight2] = useState(1)
+    const [end, setEnd] = useState(false)
 
     const[showLR, setShowLR] = useState(true)
     const[showRL, setShowRL] = useState(true)
@@ -36,6 +40,10 @@ function ChopsticksGame() {
     const[showREL, setShowREL] = useState(true)
     const[showRER, setShowRER] = useState(true)
     const[showSplit, setShowSplit] = useState(false)
+
+    useEffect(() => {
+        getScore()
+    }, [])
 
     //Socket
     useEffect(() => {
@@ -182,10 +190,45 @@ function ChopsticksGame() {
             const winner = data.player
             const winMessage = "Player " + winner + " wins. Returning to Create/Join Room..."
             setReceived(winMessage)
+            setEnd(true)
+            if (player === 1 && winner === 1) {
+                console.log("p1w1")
+                updateScore()
+            }
+            if (player === 2 && winner === 2) {
+                console.log("p2w2")
+                updateScore()
+            }
         })
 
-    }, [updateAttacker, left1, left2, right1, right2, player, showLEL, showLER, showLR, showREL, showRER, showRL, showSplit, received])
+        return () => {
+            socket.removeAllListeners();
+        };
+
+    }, [updateAttacker, left1, left2, right1, right2, player, showLEL, showLER, showLR, showREL, showRER, showRL, showSplit, received, end])
     
+    async function getScore() {
+        const { data } = await supabase
+            .from('leaderboard')
+            .select()
+            .eq('id', supabase.auth.user().id)
+        setOverall(data[0].overall)
+        setScore(data[0].chopsticks)
+    }
+
+    async function updateScore() {
+        const { data, error } = await supabase
+            .from('leaderboard')
+            .update({ overall: overall + 1 })
+            .eq('id', supabase.auth.user().id) //update overall score
+        const { data1, error1 } = await supabase
+            .from('leaderboard')
+            .update({ chopsticks: score + 1 })
+            .eq('id', supabase.auth.user().id) //update zha score
+        setOverall(overall + 1)
+        setScore(score + 1)
+    }
+
 
     function handleConfirm() {
         if (type === "create") {
@@ -373,7 +416,7 @@ function ChopsticksGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed) {
+        if (!waiting && !error && confirmed && !end) {
             return (
                 <>
                 <h4>Welcome,{player === 1 ? "Player 1" : "Player 2"}</h4>
@@ -621,6 +664,13 @@ function ChopsticksGame() {
 
     return (
         <>
+            {supabase.auth.user().id}
+            <br />
+            Player: {player}
+            <br />
+            Overall: {overall}
+            <br />
+            Score: {score}
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>
