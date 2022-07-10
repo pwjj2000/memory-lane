@@ -219,19 +219,18 @@ function ThumbsGame() {
         if (attacker && !locked) {
             return (
                 <>
-                    <h5>Choose A Number:</h5>
+                    <h5>Choose A Number</h5>
                     <br />
-                    <div class="thumbs-your-number">
-                    Your Number: {yourNumber}
-                    </div>
+                    <p>Your Number: {yourNumber}</p>
                     <br />
-                    <div className='thumbs-options'>
-                        <span><ZeroButton /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span><OneButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span><TwoButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span><ThreeButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <span><FourButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                   
+                    <div className='options'>
+                        <ul>
+                            <li><ZeroButton /></li>
+                            <li><OneButton /></li>
+                            <li><TwoButton /></li>
+                            <li><ThreeButton /></li>
+                            <li><FourButton /></li>
+                        </ul>
                     </div>
                 </>
                 
@@ -239,24 +238,24 @@ function ThumbsGame() {
         } else {
             return null
         }
-    }
 
+    }
 
     function ZeroButton() {
         return (
-            <button onClick={() => setYourNumber(0)} class="thumbs-option-button">zero</button>
+            <button onClick={() => setYourNumber(0)}>0</button>
         )
     }
 
     function OneButton() {
         return (
-            <button onClick={() => setYourNumber(1)} class="thumbs-option-button">one</button>
+            <button onClick={() => setYourNumber(1)}>1</button>
         )
     }
 
     function TwoButton() {
         return (
-            <button onClick={() => setYourNumber(2)} class="thumbs-option-button">two</button>
+            <button onClick={() => setYourNumber(2)}>2</button>
         )
     }
 
@@ -265,7 +264,7 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(3)} class="thumbs-option-button">three</button>
+                <button onClick={() => setYourNumber(3)}>3</button>
             )
         }
     }
@@ -275,7 +274,7 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(4)} class="thumbs-option-button">four</button>
+                <button onClick={() => setYourNumber(4)}>4</button>
             )
         }
     }
@@ -283,21 +282,15 @@ function ThumbsGame() {
     function ChooseRaise() {
         return (
             <>
-                <div class="thumbs-choose-left">
-                {choice1 === "Raise" ? <img src="./raised thumb.png"/> 
-                    : choice1 === "Lower" ? <img src="./dash.png"/> 
-                    : "" }
+                <div>
+                    Left Thumb: {choice1}
                     <br />
-                    <br/>
                     <Choose1 />
                 </div>
 
-                <div class="thumbs-choose-right">
-                    {choice2 === "Raise" ? <img src="./raised thumb.png"/> 
-                    : choice2 === "Lower" ? <img src="./dash.png"/> 
-                    : "" }
+                <div>
+                    Right Thumb: {choice2}
                     <br />
-                    <br/>
                     <Choose2 />
                 </div>
             </>
@@ -310,12 +303,8 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={() => setChoice1("Raise")} class="hidden-button">
-                        <img src="raise thumb button.png" />
-                    </button>
-                    <button onClick={() => setChoice1("Lower")} class="hidden-button">
-                        <img src="lower button.png" class="thumbs-lower-button"/>
-                    </button>
+                    <button onClick={() => setChoice1("Raise")}>Raise</button>
+                    <button onClick={() => setChoice1("Lower")}>Lower</button>
                 </>
             )
         }
