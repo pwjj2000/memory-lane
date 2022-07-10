@@ -19,11 +19,15 @@ function ZhaJoinRoom() {
             <h2>Zha</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />
-            <button onClick={joinRoom}>Join</button>
+            <button onClick={joinRoom} class="hidden-button">
+                <img src="./join.png" class="room-button"/>
+            </button>
             <br />
             <br />
             <br />
-            <button onClick={joinRandom}>Join Random</button>
+            <button onClick={joinRandom} class="hidden-button">
+                <img src="./join random.png" class="room-button"/>
+            </button>
             <br />
             <br />
             <button onClick={() => history.push('/zha-new-game')} class="hidden-button">

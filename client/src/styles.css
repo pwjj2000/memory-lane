@@ -25,8 +25,15 @@ h2 {
 .signout-button {
     width: 230px;
     height: auto;
-    margin-left: 80px;
+    margin-left: 300px;
 }
+
+
+.room-button {
+    margin-left: -40px;
+
+}
+
 
 .join-room-button {
     float: left;
@@ -37,6 +44,12 @@ h2 {
     float: left;
     margin-left: 50px;
 }
+
+:hover.room-button {
+    opacity: 30%;
+    transition-duration: 0.4s;
+}
+
 
 .hidden-button {
     width: 0;
@@ -56,6 +69,16 @@ h2 {
     width: 240px;
     float: left;
     margin-left: 420px;
+}
+
+:hover.create-room-button {
+    background-color: #e5e5e5;
+    text-decoration: none;
+}
+
+:hover.join-room-button {
+    background-color: #e5e5e5;
+    text-decoration: none;
 }
 
 .memorylane-logo {
@@ -257,6 +280,144 @@ h2 {
     margin: 50px;
 }
 
+.thumbs-choose-left > img {
+    width: 100px;
+    height: auto;
+    position: relative;
+    left: 170px;
+}
+
+.thumbs-choose-right > img {
+    width: 100px;
+    height: auto;
+    position: relative;
+    transform: scaleX(-1);
+    left: 170px;
+}
+
+.thumbs-choose-left {
+    float:left;
+    width: 510px;
+    height: 280px;
+    padding: 30px;
+    border-radius: 5px;
+    border-color: darkblue;
+    border-width: 3px;
+    border-style: solid;
+    background-color: lightblue;
+}
+
+.thumbs-choose-right {
+    float: left;
+    width: 510px;
+    height: 280px;
+    padding: 30px;
+    margin-left: 90px;
+    border-radius: 5px;
+    border-color: darkblue;
+    border-width: 3px;
+    border-style: solid;
+    background-color: lightpink;
+}
+
+.thumbs-lower-button {
+    position: relative;
+    left: 220px;
+}
+
+.thumbs-your-number {
+    width: 400px;
+    height: 80px;
+    border-radius: 5px;
+    border-color: darkblue;
+    border-width: 3px;
+    border-style: solid;
+    padding: 18px;
+    font-family: "courier";
+    font-size: 22px;
+}
+
+.thumbs-option-button {
+    background-color: lightgrey;
+    border-radius: 3px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    font-family: "courier";
+    color: black;
+}
+
+.thumbs-result {
+    border-radius: 3px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 30px;
+    font-family: "courier";
+    width: 500px;
+    height: 150px;
+    float: left;
+    margin-left: 50px;
+    background-color: lightcyan;
+}
+
+.thumbs-result > img {
+    width: 60px;
+    height: auto;
+    position: relative;
+    top: 15px;
+}
+
+.thumbs-raised-correct {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 25px;
+    width: 400px;
+    margin-left: 50px;
+    font-family: "courier";
+    background-color: lightgreen;
+}
+
+.thumbs-number-called-correct {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 25px;
+    width: 400px;
+    margin-left: 50px;
+    font-family: "courier";
+    margin-top: 10px;
+    background-color: lightgreen;
+}
+
+.thumbs-raised-wrong {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 25px;
+    width: 400px;
+    margin-left: 50px;
+    font-family: "courier";
+    background-color: #ffa8b5;
+}
+
+.thumbs-number-called-wrong {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 25px;
+    width: 400px;
+    margin-left: 50px;
+    font-family: "courier";
+    margin-top: 10px;
+    background-color: #ffa8b5;
+}
+
 :hover.create-room-button {
     background-color: #e5e5e5;
     text-decoration: none;
@@ -268,7 +429,7 @@ h2 {
 }
 
 :hover.signout-button {
-    box-shadow: 0 0 5px brown;
+    opacity: 30%;
     transition-duration: 0.4s;
 }
 
@@ -287,4 +448,102 @@ h2 {
     opacity: 30%;
     transition-duration: 0.4s;
 }
+
+.leaderboard {
+    padding: 20px 50px; 
+}
+
+.leaderboard-header, .row {
+    display: flex;
+    border-bottom: 1px solid #c2dd2b;
+}
+
+.leaderboard-header p, .row p {
+    float: left;
+    text-align: left;
+    width: 50%; 
+}
+
+.row > p {
+    font-family: Cochin;
+}
+
+.leaderboard-your-ranking {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: dashed;
+    padding: 25px;
+}
+
+.leaderboard-overall-button {
+    width: 55px;
+    height: auto;
+    position: relative;
+    top: 6px;
+    right: 3px;
+}
+
+.leaderboard-zha-button {
+    width: 90px;
+    height: auto;
+    position: relative;
+    bottom: 12px;
+}
+
+.leaderboard-header {
+    font-weight: bold;
+    border-width: 2px;
+    color: #c2dd2b;
+    text-transform: uppercase;
+}
+
+.leaderboard-list {
+    padding-left: 0; 
+    font-family: "courier";
+}
+
+.leaderboard-game-logo {
+    float: right;
+    width: 250px;
+    position: relative;
+    bottom: 83px;
+}
+
+.leaderboard-game-logo-overall {
+    float: right;
+    width: 120px;
+    position: relative;
+    bottom: 0px;
+}
+  
+.nav-buttons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100px;
+    overflow: hidden;
+    background-color: lightcyan;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.nav-button {
+    float: left;
+    width: 25%;
+}
+
+.link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+:hover.link {
+    background-color: lightgray;
+    text-decoration: none;
+}
+
 

@@ -1,26 +1,26 @@
 import {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 
-function ChopsticksCreateRoom() {
+function ThumbsCreateRoom() {
     const [room, setRoom] = useState("")
 
     const history = useHistory()
 
     function createRoom() {
-        history.push('/chopsticks-game', {roomID: room, type: "create", game:"chopsticks"})
+        history.push('/thumbs-game', {roomID: room, type: "create", game:"thumbs"})
     }
 
     return (
-        <div className="Chopsticks">
-            <h2>Chopsticks</h2>
+        <div className="Thumbs">
+            <h2>Thumbs</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />
             <button onClick={createRoom} class="hidden-button">
-                <img src="./create.png" class="room-button"/>
+            <img src='./create.png' class="room-button"/>
             </button>
             <br/>
             <br/>
-            <button onClick={() => history.push('/chopsticks-new-game')} class="hidden-button">
+            <button onClick={() => history.push('/thumbs-new-game')} class="hidden-button">
             <img src="./back icon.png" class="backbutton"/>
             </button>
             <br/>
@@ -28,4 +28,4 @@ function ChopsticksCreateRoom() {
     );
 }
 
-export default ChopsticksCreateRoom
+export default ThumbsCreateRoom

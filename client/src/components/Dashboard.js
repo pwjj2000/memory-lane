@@ -28,11 +28,17 @@ export function Dashboard() {
               <img src='./thumbs logo.png' class="button-logos" alt='Thumbs Logo' />
             </button>
         </div>
-        <br/>
-        <br/> 
+
+        <div>
+          <br/><br/>
+        <button onClick={() => history.push('/overall-leaderboard')} class="hidden-button">
+          <img src="./leaderboard.png" class="menu-button"/>
+          </button>
         <button onClick={handleSignOut} class="hidden-button">
           <img src="./signout.png" class="signout-button"/>
         </button>
+        <br/><br/>
+        </div>
       </div>
     )
 }

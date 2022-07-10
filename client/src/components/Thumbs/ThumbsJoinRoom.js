@@ -1,22 +1,22 @@
 import { useHistory } from 'react-router-dom'
-import { useState } from 'react'
+import {useState} from 'react'
 
-function ChopsticksJoinRoom() {
+function ThumbsJoinRoom() {
     const [room, setRoom] = useState("")
 
     const history = useHistory()
     
     function joinRoom() {
-        history.push('/chopsticks-game', {roomID: room, type: "join", game: "chopsticks"})
+        history.push('/thumbs-game', {roomID: room, type: "join", game: "thumbs"})
     }
 
     function joinRandom() {
-        history.push('/chopsticks-game', {roomID: null, type: "random", game: "chopsticks"})
+        history.push('/thumbs-game', {roomID: null, type: "random", game: "thumbs"})
     }
 
     return (
-        <div className="Chopsticks">
-            <h2>Chopsticks</h2>
+        <div className="Thumbs">
+            <h2>Thumbs</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />
             <button onClick={joinRoom} class="hidden-button">
@@ -26,11 +26,11 @@ function ChopsticksJoinRoom() {
             <br />
             <br />
             <button onClick={joinRandom} class="hidden-button">
-                <img src="./join random.png" class="room-button"/>
+                <img src="join random.png" class="room-button" />
             </button>
             <br/>
             <br />
-            <button onClick={() => history.push('/chopsticks-new-game')} class="hidden-button">
+            <button onClick={() => history.push('/thumbs-new-game')} class="hidden-button">
             <img src="./back icon.png" class="backbutton"/>
             </button>
             <br />
@@ -38,4 +38,4 @@ function ChopsticksJoinRoom() {
     );
 }
 
-export default ChopsticksJoinRoom
+export default ThumbsJoinRoom

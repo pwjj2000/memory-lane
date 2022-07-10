@@ -15,7 +15,9 @@ function ZhaCreateRoom() {
             <h2>Zha</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />
-            <button onClick={createRoom}>Create</button>
+            <button onClick={createRoom} class="hidden-button">
+                <img src="./create.png" class="room-button"/>
+            </button>
             <br/>
             <br/>
             <button onClick={() => history.push('/zha-new-game')} class="hidden-button">

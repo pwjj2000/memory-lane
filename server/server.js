@@ -10,7 +10,7 @@ app.use(cors());
 const server = http.createServer(app);
 
 const {createRoom, joinRoom, exitRoom, rooms} = require("./util/rooms");
-const {connectedUsers, initializeChoices, userConnected, zhaMakeMove, moves, choices} = require("./util/users");
+const {connectedUsers, initializeChoices, userConnected, zhaMakeMove, choices, initializeChoicesAlt, thumbsMakeMove} = require("./util/users");
 
 const io = new Server(server, {
     cors: {
@@ -186,10 +186,12 @@ io.on("connection", (socket) => {
            
             if (newLives1 === 0) {
                 const player = 1
+                console.log("P1 loses")
                 io.to(room).emit("zha-end", {player})
             } 
             if (newLives2 === 0) {
                 const player = 2
+                console.log("P2 loses")
                 io.to(room).emit("zha-end", {player})
             }
             initializeChoices(room)
@@ -260,6 +262,61 @@ io.on("connection", (socket) => {
         if ((data.L1 === 0 && data.R1 === 0) || (data.L2 === 0 && data.R2 === 0)) {
             io.to(data.room).emit("cs-end", {player})
         }   
+    })
+
+    socket.on("thumbs-submit", ({choice1, choice2, player, attacker, lives1, lives2, room, yourNumber}) => {
+        thumbsMakeMove(choice1, choice2, player, room, yourNumber)
+        if (choices[room][0] !== "" && choices[room][1] !== "" && choices[room][2] !== "" && choices[room][3] !== "" && choices[room][4] !== "") {
+            let thumbsRaised = 0
+            let log = ""
+            const p1c1 = choices[room][0]
+            const p1c2 = choices[room][1]
+            const p2c1 = choices[room][2]
+            const p2c2 = choices[room][3]
+            const num = choices[room][4]
+            for (let i = 0; i < 4; i++) {
+                if (choices[room][i] === "Raise") {
+                    thumbsRaised++
+                }
+            }
+            console.log(thumbsRaised)
+            console.log(num)
+
+            if (thumbsRaised !== num) {
+                log = "Number called does not match thumbs raised. Nothing happened."
+                const newLives1 = lives1
+                const newLives2 = lives2
+                io.to(room).emit("thumbs-end-turn", {p1c1, p1c2, p2c1, p2c2, newLives1, newLives2, num, thumbsRaised, log})
+                io.to(room).emit("reset")
+                initializeChoicesAlt(room)
+            } else {
+                if ((player === 1 && attacker) || (player === 2 && !attacker)) {
+                    const newLives1 = lives1 - 1
+                    const newLives2 = lives2
+                    log = "Player 1 guessed the number of thumbs raised correctly!"
+                    io.to(room).emit("thumbs-end-turn", {p1c1, p1c2, p2c1, p2c2, newLives1, newLives2, num, thumbsRaised, log})
+                    io.to(room).emit("reset")
+                    initializeChoicesAlt(room)
+                    if (newLives1 === 0) {
+                        const winner = 1
+                        io.to(room).emit("thumbs-end", {winner})
+                    }
+                } else {
+                    const newLives2 = lives2 - 1
+                    const newLives1 = lives1
+                    log = "Player 2 guessed the number of thumbs raised correctly!"
+                    io.to(room).emit("thumbs-end-turn", {p1c1, p1c2, p2c1, p2c2, newLives1, newLives2, num, thumbsRaised, log})
+                    io.to(room).emit("reset")
+                    initializeChoicesAlt(room)
+                    if (newLives2 === 0) {
+                        const winner = 2
+                        io.to(room).emit("thumbs-end", {winner})
+                    }
+                }
+            }
+            
+
+        }
     })
     
 })

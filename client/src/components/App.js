@@ -18,13 +18,22 @@ import ChopsticksJoinRoom from './Chopsticks/ChopsticksJoinRoom';
 import ChopsticksNewGame from './Chopsticks/ChopsticksNewGame';
 import ChopsticksGame from './Chopsticks/ChopsticksGame';
 import ChopsticksTutorial from './Chopsticks/ChopsticksTutorial';
-import { ThumbsMenu } from './Thumbs/Menu'
+import ThumbsMenu from './Thumbs/ThumbsMenu';
+import ThumbsCreateRoom from './Thumbs/ThumbsCreateRoom';
+import ThumbsJoinRoom from './Thumbs/ThumbsJoinRoom';
+import ThumbsNewGame from './Thumbs/ThumbsNewGame';
+import ThumbsGame from './Thumbs/ThumbsGame';
+import ThumbsTutorial from './Thumbs/ThumbsTutorial';
+import OverallLeaderboard from './Leaderboard/OverallLeaderboard';
+import ZhaLeaderboard from './Leaderboard/ZhaLeaderboard';
+import ChopsticksLeaderboard from './Leaderboard/ChopsticksLeaderboard';
+import ThumbsLeaderboard from './Leaderboard/ThumbsLeaderboard';
 
 
 export default function App() {
   return (
     <div>
-      <img src="./banner.png" class="memorylane-logo" />
+      <img src="./banner.png" className="memorylane-logo" />
       <Router>
         <AuthProvider>
           <Switch>
@@ -48,6 +57,16 @@ export default function App() {
             <PrivateRoute exact path="/chopsticks-tutorial" component ={ChopsticksTutorial} />
 
             <PrivateRoute exact path="/thumbs" component={ThumbsMenu} />
+            <PrivateRoute exact path="/thumbs-new-game" component={ThumbsNewGame} />
+            <PrivateRoute exact path="/thumbs-create-room" component={ThumbsCreateRoom} />
+            <PrivateRoute exact path="/thumbs-join-room" component={ThumbsJoinRoom} />
+            <PrivateRoute exact path="/thumbs-game" component={ThumbsGame} />
+            <PrivateRoute exact path="/thumbs-tutorial" component={ThumbsTutorial} />
+
+            <PrivateRoute exact path="/overall-leaderboard" component={OverallLeaderboard} />
+            <PrivateRoute exact path="/zha-leaderboard" component={ZhaLeaderboard} />
+            <PrivateRoute exact path="/chopsticks-leaderboard" component={ChopsticksLeaderboard} />
+            <PrivateRoute exact path="/thumbs-leaderboard" component={ThumbsLeaderboard} />
           </Switch>
         </AuthProvider>
       </Router>
