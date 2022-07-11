@@ -101,10 +101,29 @@ function ZhaGame() {
             setLives2(data.newLives2)
             setLocked(false)
             updateAttacker()
-        })
-
-        socket.on("reset-choices", () => {
-            resetChoices()
+            if (player === 1) {
+                if (data.newLives1 === 2) {
+                    setChoice1("")
+                    setChoice2("")
+                } else if (data.newLives1 === 1) {
+                    setChoice1("")
+                    setChoice2("DEAD")
+                } else {
+                    setChoice1("DEAD")
+                    setChoice2("DEAD")
+                }
+            } else {
+                if (data.newLives2 === 2) {
+                    setChoice1("")
+                    setChoice2("")
+                } else if (data.newLives2 === 1) {
+                    setChoice1("")
+                    setChoice2("DEAD")
+                } else {
+                    setChoice1("DEAD")
+                    setChoice2("DEAD")
+                }
+            }
         })
 
         socket.on("zha-end", (data) => {
@@ -352,7 +371,6 @@ function ZhaGame() {
                 setChoice2("DEAD")
             }
         }
-
     }
 
     function choose(choice) {

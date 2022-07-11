@@ -166,24 +166,12 @@ io.on("connection", (socket) => {
                 } 
             }
 
-            
-            // if (attacker) {
-            //     socket.broadcast.to(room).emit("change-lives", {newLives})
-            //     socket.emit("zha-end-turn", {result1, result2, result3, result4})
-            //     socket.broadcast.to(room).emit("zha-end-turn", {result1, result2, result3, result4})
-            // } else {
-            //     socket.emit("change-lives", {newLives})
-            //     socket.emit("zha-end-turn", {result1, result2, result3, result4})
-            //     socket.broadcast.to(room).emit("zha-end-turn", {result1, result2, result3, result4})
-            // }
             const p1c1 = choices[room][0]
             const p1c2 = choices[room][1]
             const p2c1 = choices[room][2]
             const p2c2 = choices[room][3]
             io.to(room).emit("zha-end-turn", {result1, result2, result3, result4, p1c1, p1c2, p2c1, p2c2, newLives1, newLives2})
-            io.to(room).emit("reset-choices")
             
-           
             if (newLives1 === 0) {
                 const player = 1
                 console.log("P1 loses")
@@ -287,7 +275,7 @@ io.on("connection", (socket) => {
                 const newLives1 = lives1
                 const newLives2 = lives2
                 io.to(room).emit("thumbs-end-turn", {p1c1, p1c2, p2c1, p2c2, newLives1, newLives2, num, thumbsRaised, log})
-                io.to(room).emit("reset")
+                // io.to(room).emit("reset")
                 initializeChoicesAlt(room)
             } else {
                 if ((player === 1 && attacker) || (player === 2 && !attacker)) {

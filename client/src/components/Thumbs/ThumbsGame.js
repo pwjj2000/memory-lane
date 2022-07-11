@@ -105,10 +105,6 @@ function ThumbsGame() {
             }
         })
 
-        socket.on("reset", () => {
-            resetChoices()
-        })
-
         socket.on("thumbs-end-turn", (data) => {
             //{p1c1, p1c2, p2c1, p2c2, newLives1, newLives2, log}
             setThumb1A(data.p1c1)
@@ -123,6 +119,30 @@ function ThumbsGame() {
             setLog(data.log)
             setLocked(false)
             updateAttacker()
+            setYourNumber(null)
+            if (player === 1) {
+                if (data.newLives1 === 2) {
+                    setChoice1("")
+                    setChoice2("")
+                } else if (data.newLives1 === 1) {
+                    setChoice1("")
+                    setChoice2("DEAD")
+                } else {
+                    setChoice1("DEAD")
+                    setChoice2("DEAD")
+                }
+            } else {
+                if (data.newLives2 === 2) {
+                    setChoice1("")
+                    setChoice2("")
+                } else if (data.newLives2 === 1) {
+                    setChoice1("")
+                    setChoice2("DEAD")
+                } else {
+                    setChoice1("DEAD")
+                    setChoice2("DEAD")
+                }
+            }
         })
 
         return () => {
@@ -130,6 +150,8 @@ function ThumbsGame() {
         };
 
     }, [updateAttacker, resetChoices, end])
+
+ 
     
     async function getScore() {
         const { data } = await supabase
@@ -303,8 +325,12 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={() => setChoice1("Raise")}>Raise</button>
-                    <button onClick={() => setChoice1("Lower")}>Lower</button>
+                    <button onClick={() => setChoice1("Raise")} class="hidden-button">
+                        <img src="raise thumb button.png" />
+                    </button>
+                    <button onClick={() => setChoice1("Lower")} class="hidden-button">
+                        <img src="lower button.png" class="thumbs-lower-button"/>
+                    </button>
                 </>
             )
         }
@@ -331,7 +357,7 @@ function ThumbsGame() {
     function ChooseSection() {
         return (
             <div class="thumbs-choose-section">
-                <h5>Choose options (left & right):</h5>
+                <h5>Choose options:</h5>
                 <div class = "thumbs-choose-raise">
                 <ChooseRaise />
                 <br/>
@@ -360,17 +386,17 @@ function ThumbsGame() {
 
                 <div class = "thumbs-result">
                     Player 1  {player === 1 ? "(you)" : ""} : &nbsp;&nbsp;{thumb1A === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb1A === "Lower" ? <img src="./dash.png"/> : "" } &nbsp;&nbsp;&nbsp;
+                    : thumb1A === "Lower" ? <img src="./dash.png"/> : thumb1A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
                     {thumb1B === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb1B === "Lower" ? <img src="./dash.png"/> : "" }
+                    : thumb1B === "Lower" ? <img src="./dash.png"/> : thumb1B === "DEAD" ? "DEAD" : "" }
                     
                 </div>
 
                 <div className='thumbs-result'>
                     Player 2 {player === 2 ? "(you)" : ""} : &nbsp;&nbsp;{thumb2A === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb2A === "Lower" ? <img src="./dash.png"/> : "" } &nbsp;&nbsp;&nbsp;
+                    : thumb2A === "Lower" ? <img src="./dash.png"/> : thumb2A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
                     {thumb2B === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb2B === "Lower" ? <img src="./dash.png"/> : "" }  
+                    : thumb2B === "Lower" ? <img src="./dash.png"/> : thumb2B === "DEAD" ? "DEAD" : "" }  
                 </div>
 
                 <br/><br/><br/><br/><br/>
@@ -395,7 +421,7 @@ function ThumbsGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed) {
+        if (!waiting && !error && confirmed && !end) {
             return (
                 <>
                     <h4>Welcome, {player === 1 ? "Player 1" : "Player 2"}!</h4>
