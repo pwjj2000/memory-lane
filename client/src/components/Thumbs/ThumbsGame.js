@@ -211,7 +211,9 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={handleConfirm}>Confirm</button>
+                    <button onClick={handleConfirm} class="hidden-button">
+                        <img src="./confirm.png" class="confirm-button"/>
+                    </button>
                 </>
             )
         }
@@ -220,7 +222,10 @@ function ThumbsGame() {
     function BackButton() {
         return (
             <>
-                <button onClick={handleBack}>Back</button>
+            <br/>
+               <button onClick={handleBack} class="hidden-button">
+                    <img src="back icon.png" class="backbutton"/>
+                </button>
             </>
         )
     }
@@ -241,18 +246,19 @@ function ThumbsGame() {
         if (attacker && !locked) {
             return (
                 <>
-                    <h5>Choose A Number</h5>
+                   <h5>Choose A Number:</h5>
                     <br />
-                    <p>Your Number: {yourNumber}</p>
+                    <div class="thumbs-your-number">
+                    Your Number: {yourNumber}
+                    </div>
                     <br />
-                    <div className='options'>
-                        <ul>
-                            <li><ZeroButton /></li>
-                            <li><OneButton /></li>
-                            <li><TwoButton /></li>
-                            <li><ThreeButton /></li>
-                            <li><FourButton /></li>
-                        </ul>
+                    <div className='thumbs-options'>
+                        <span><ZeroButton /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><OneButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><TwoButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><ThreeButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span><FourButton />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                   
                     </div>
                 </>
                 
@@ -265,19 +271,19 @@ function ThumbsGame() {
 
     function ZeroButton() {
         return (
-            <button onClick={() => setYourNumber(0)}>0</button>
+            <button onClick={() => setYourNumber(0)} class="thumbs-option-button">zero</button>
         )
     }
 
     function OneButton() {
         return (
-            <button onClick={() => setYourNumber(1)}>1</button>
+            <button onClick={() => setYourNumber(1)} class="thumbs-option-button">one</button>
         )
     }
 
     function TwoButton() {
         return (
-            <button onClick={() => setYourNumber(2)}>2</button>
+            <button onClick={() => setYourNumber(2)} class="thumbs-option-button">two</button>
         )
     }
 
@@ -286,7 +292,7 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(3)}>3</button>
+                <button onClick={() => setYourNumber(3)} class="thumbs-option-button">three</button>
             )
         }
     }
@@ -296,11 +302,10 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(4)}>4</button>
+                <button onClick={() => setYourNumber(4)} class="thumbs-option-button">four</button>
             )
         }
     }
-
     function ChooseRaise() {
         return (
             <>
@@ -363,7 +368,7 @@ function ThumbsGame() {
                 <br/>
                 </div>
                 <div>
-                <br/><br/><br/><br/><br/><br/><br/><br/>
+                
                 <ChooseNumber />
                 </div>
                 <br/>

@@ -266,7 +266,9 @@ function ChopsticksGame() {
         } else {
             return (
                 <>
-                    <button onClick={handleConfirm}>Confirm</button>
+                    <button onClick={handleConfirm} class="hidden-button">
+                        <img src="./confirm.png" class="confirm-button"/>
+                    </button>
                 </>
             )
         }
@@ -275,7 +277,10 @@ function ChopsticksGame() {
     function BackButton() {
         return (
             <>
-                <button onClick={handleBack}>Back</button>
+            <br/>
+                <button onClick={handleBack} class="hidden-button">
+                    <img src="back icon.png" class="backbutton"/>
+                </button>
             </>
         )
     }

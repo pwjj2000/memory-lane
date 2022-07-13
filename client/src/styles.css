@@ -28,6 +28,10 @@ h2 {
     margin-left: 300px;
 }
 
+.confirm-button {
+    position: relative;
+    right: 50px;
+}
 
 .room-button {
     margin-left: -40px;
@@ -145,6 +149,19 @@ h2 {
     border-width: 2px;
     padding: 5px;
     margin: 5px;
+}
+
+.zha-legend {
+    width: 350px;
+    height: auto;
+    float: right;
+    position: relative;
+    bottom: 400px;
+    border-color: orange;
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 60px;
 }
 
 
@@ -544,6 +561,12 @@ h2 {
 :hover.link {
     background-color: lightgray;
     text-decoration: none;
+}
+
+:hover.confirm-button {
+    opacity: 30%;
+    transition-duration: 0.4s;
+    
 }
 
 
