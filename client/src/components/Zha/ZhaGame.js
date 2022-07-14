@@ -4,8 +4,8 @@ import {useEffect, useState} from 'react'
 import "../../styles.css"
 import { supabase } from '../../supabase'
 
- const socket = io.connect("http://localhost:3001")
- //const socket = io.connect("https://memorylane-app.herokuapp.com/")
+// const socket = io.connect("http://localhost:3001")
+const socket = io.connect("https://memorylane-app.herokuapp.com/")
 
 function ZhaGame() {
     //Router Stuff
