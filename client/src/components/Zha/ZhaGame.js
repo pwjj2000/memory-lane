@@ -142,6 +142,9 @@ function ZhaGame() {
                 console.log("p2w2")
                 updateScore()
             }
+            setTimeout(() => {
+                history.push('zha-new-game')
+            }, 5000)
         })
 
         return () => {
@@ -447,13 +450,11 @@ function ZhaGame() {
 
     return (
         <>
-            {supabase.auth.user().id}
+            Overall Score: {overall}
             <br />
-            Player: {player}
-            <br />
-            Overall: {overall}
-            <br />
-            Score: {score}
+            Zha Score: {score}
+            <br/>
+            <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>

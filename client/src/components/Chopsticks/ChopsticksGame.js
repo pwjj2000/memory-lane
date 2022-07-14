@@ -199,6 +199,9 @@ function ChopsticksGame() {
                 console.log("p2w2")
                 updateScore()
             }
+            setTimeout(() => {
+                history.push('chopsticks-new-game')
+            }, 5000)
         })
 
         return () => {
@@ -669,13 +672,11 @@ function ChopsticksGame() {
 
     return (
         <>
-            {supabase.auth.user().id}
+            Overall Score: {overall}
             <br />
-            Player: {player}
-            <br />
-            Overall: {overall}
-            <br />
-            Score: {score}
+            Chopsticks Score: {score}
+            <br/>
+            <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>

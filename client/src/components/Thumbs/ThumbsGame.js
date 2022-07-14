@@ -103,6 +103,9 @@ function ThumbsGame() {
                 console.log("p2w2")
                 updateScore()
             }
+            setTimeout(() => {
+                history.push('thumbs-new-game')
+            }, 5000)
         })
 
         socket.on("thumbs-end-turn", (data) => {
@@ -537,13 +540,11 @@ function ThumbsGame() {
 
     return (
         <>
-            {supabase.auth.user().id}
+            Overall Score: {overall}
             <br />
-            Player: {player}
-            <br />
-            Overall: {overall}
-            <br />
-            Score: {score}
+            Thumbs Score: {score}
+            <br/>
+            <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>
