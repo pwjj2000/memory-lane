@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import "../../styles.css"
 import { supabase } from '../../supabase'
 
-//const socket = io.connect("http://localhost:3001")
+// const socket = io.connect("http://localhost:3001")
 const socket = io.connect("https://memorylane-app-complete.herokuapp.com/")
 
 function ChopsticksGame() {
@@ -193,10 +193,6 @@ function ChopsticksGame() {
             setEnd(true)
             if (player === 1 && winner === 1) {
                 console.log("p1w1")
-                updateScore()
-            }
-            if (player === 2 && winner === 2) {
-                console.log("p2w2")
                 updateScore()
             }
             setTimeout(() => {
@@ -676,6 +672,15 @@ function ChopsticksGame() {
             <br />
             Chopsticks Score: {score}
             <br/>
+            <br/>
+            Tips:
+            <div>
+                <ul>
+                    <li>First player to have 2 DEAD hands concurrently LOSES!</li>
+                    <li>A hand that is attacked and ends up with 5 or more "fingers" becomes DEAD!</li>
+                    <li>You can bring back a DEAD hand by "Splitting"!</li>
+                </ul>
+            </div>
             <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>

@@ -455,6 +455,14 @@ function ZhaGame() {
             Zha Score: {score}
             <br/>
             <br/>
+            Tips:
+            <div>
+                <ul>
+                    <li>First player to 0 Lives LOSES!</li>
+                    <li>Predict what combinations your opponent will pick, and pick combinations that counter it!</li>
+                </ul>
+            </div>
+            <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>

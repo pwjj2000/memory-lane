@@ -545,6 +545,15 @@ function ThumbsGame() {
             Thumbs Score: {score}
             <br/>
             <br/>
+            Tips:
+            <div>
+                <ul>
+                    <li>First player to have 0 thumbs WINS!</li>
+                    <li>At every turn, choose whether to raise or lower each thumb you have remaining!</li>
+                    <li>When it is your turn, guess the total number of thumbs both sides will raise!</li>
+                </ul>
+            </div>
+            <br/>
             <ConfirmMessage />  
             <p style={{color: "green"}}>{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>
