@@ -252,19 +252,17 @@ Here is a brief overview of our application design with some description of each
   
 
 **Timeline**
-Liftoff + Milestone 1 (May):
-9 - 16 May: Refining of project idea, application features
-17 - 23 May: Picked up necessary technologies - Reactjs, Supabase, Socket.io
-24 - 30 May: Implementation of login feature and creation of app mockup
-
-Milestone 2 (June):
-31 May - 6 June: Implementation of Zha game and tutorial
-7 - 13 June: Testing of Zha game and implementation of multiplayer feature
-14 - 20 June: Implementation of Chopsticks game and tutorial
-21 - 27 June: Testing of Chopsticks and multiplayer feature
-
-Milestone 3 (July):
-28 June - 4 July: Implementation of Thumbs game and tutorial of all 3 games
-5 - 11 July: Testing of thumbs game and implementation of leaderboard
-12 - 18 July: Integrating multiplayer feature and leaderboard across all games
-19 - 25 July: Testing and debugging
+- Liftoff + Milestone 1 (May):
+	- 9 - 16 May: Refining of project idea, application features
+	- 17 - 23 May: Picked up necessary technologies - Reactjs, Supabase, Socket.io
+	- 24 - 30 May: Implementation of login feature and creation of app mockup
+- Milestone 2 (June):
+	- 31 May - 6 June: Implementation of Zha game and tutorial
+	- 7 - 13 June: Testing of Zha game and implementation of multiplayer feature
+	- 14 - 20 June: Implementation of Chopsticks game and tutorial
+	- 21 - 27 June: Testing of Chopsticks and multiplayer feature
+- Milestone 3 (July):
+	- 28 June - 4 July: Implementation of Thumbs game and tutorial of all 3 games
+	- 5 - 11 July: Testing of thumbs game and implementation of leaderboard
+	- 12 - 18 July: Integrating multiplayer feature and leaderboard across all games
+	- 19 - 25 July: Testing and debugging
