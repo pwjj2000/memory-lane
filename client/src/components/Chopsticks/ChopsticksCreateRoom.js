@@ -11,7 +11,7 @@ function ChopsticksCreateRoom() {
     }
 
     return (
-        <div className="Chopsticks">
+        <div className="Chopsticks" title='ChopsticksCreateRoom'>
             <h2>Chopsticks</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />

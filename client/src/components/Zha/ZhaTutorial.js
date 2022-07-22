@@ -6,7 +6,7 @@ function ZhaTutorial() {
     const history = useHistory();
 
     return (
-        <div>
+        <div title="ZhaTutorial">
             <h2>Zha Tutorial</h2>
             <div className="tutorial-game-logo">
                 <img src="./zha logo.png" alt="Zha Logo"/>

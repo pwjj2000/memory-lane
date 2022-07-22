@@ -15,7 +15,7 @@ function ThumbsJoinRoom() {
     }
 
     return (
-        <div className="Thumbs">
+        <div className="Thumbs" title='ThumbsJoinRoom'>
             <h2>Thumbs</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />

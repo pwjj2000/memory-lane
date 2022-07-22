@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 export default function ThumbsMenu() {
     const history = useHistory();
     return (
-        <div>
+        <div title='ThumbsMenu'>
             <img src='./thumbs logo.png' className='menu-logo' alt="Thumbs Logo"/>
             <h2>Thumbs</h2>
             <ul className='menu'>

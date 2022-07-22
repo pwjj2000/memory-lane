@@ -32,7 +32,7 @@ import ThumbsLeaderboard from './Leaderboard/ThumbsLeaderboard';
 
 export default function App() {
   return (
-    <div>
+    <div title='App'>
       <img src="./banner.png" className="memorylane-logo" alt="Banner"/>
       <Router>
         <AuthProvider>

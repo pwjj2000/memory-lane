@@ -210,7 +210,8 @@ function ChopsticksGame() {
         const { data } = await supabase
             .from('leaderboard')
             .select()
-            .eq('id', supabase.auth.user().id)
+            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
+            //supabase.auth.user().id)
         setOverall(data[0].overall)
         setScore(data[0].chopsticks)
     }
@@ -219,11 +220,13 @@ function ChopsticksGame() {
         const { data, error } = await supabase
             .from('leaderboard')
             .update({ overall: overall + 1 })
-            .eq('id', supabase.auth.user().id) //update overall score
+            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
+            //supabase.auth.user().id) //update overall score
         const { data1, error1 } = await supabase
             .from('leaderboard')
             .update({ chopsticks: score + 1 })
-            .eq('id', supabase.auth.user().id) //update zha score
+            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
+            //supabase.auth.user().id) //update zha score
         setOverall(overall + 1)
         setScore(score + 1)
     }
@@ -422,7 +425,7 @@ function ChopsticksGame() {
     function Game() {
         if (!waiting && !error && confirmed) {
             return (
-                <>
+                <div title='ChopsticksGameboard'>
                 <h4>Welcome,{player === 1 ? "Player 1" : "Player 2"}</h4>
                     {attacker ? <img src="./attacking.png" alt="Attacking"/> : <img src="./defending.png" alt="Defending"/>}
                     <br/>
@@ -465,7 +468,7 @@ function ChopsticksGame() {
                     </div>
                       
                     <Options />
-                </>
+                </div>
             ) 
         } else {
             return null
@@ -667,7 +670,7 @@ function ChopsticksGame() {
     }
 
     return (
-        <>
+        <div title='ChopsticksGame'>
             Overall Score: {overall}
             <br />
             Chopsticks Score: {score}
@@ -692,7 +695,7 @@ function ChopsticksGame() {
             </div>
             <br/>
            <Game />
-        </>
+        </div>
     )
 }
 

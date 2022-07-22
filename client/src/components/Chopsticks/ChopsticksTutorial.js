@@ -5,10 +5,10 @@ import React from 'react'
 function ChopsticksTutorial() {
     const history = useHistory();
     return (
-        <div>
+        <div title='ChopsticksTutorial'>
             <h2>Chopsticks Tutorial</h2>
             <div className = "tutorial-game-logo">
-            <img src="./Chopsticks logo.png"/>
+            <img src="./Chopsticks logo.png" alt='Chopsticks logo'/>
             </div>
 
             <div>
@@ -18,13 +18,13 @@ function ChopsticksTutorial() {
             <div className="cs-tutorial-icon">
                 <h3>Hands</h3>
                 <p>Each hand can take the value of 1, 2, 3 or 4 which is indicated by the number of fingers raised by each hand. Once the value of the hand reaches 5 or above, the hand is considered "defeated".</p>
-                <img src="./one finger.png"/><img src="two finger.png"/><img src="./three finger.png"/><img src = "./four finger.png"/>
+                <img src="./one finger.png" alt='One Finger'/><img src="two finger.png" alt='Two Fingers'/><img src="./three finger.png" alt='Three Fingers'/><img src = "./four finger.png" alt='Four Fingers'/>
             </div>
 
             <div className ="cs-tutorial-icon">
                 <h3>Gameplay</h3>
                 <p>Each player starts with both hands of value one.</p>
-                <img src="./one finger.png"/><img src="./one finger.png"/><br/>
+                <img src="./one finger.png" alt='One Finger'/><img src="./one finger.png" alt='One Finger'/><br/>
                 <p>Players then take turns to make moves until one player has both hands defeated. On the attacking player's turn, the attacking player can either choose to attack or split. A defeated hand cannot make any attacks.</p>
             </div>
 

@@ -15,7 +15,7 @@ function ChopsticksJoinRoom() {
     }
 
     return (
-        <div className="Chopsticks">
+        <div className="Chopsticks" title='ChopsticksJoinRoom'>
             <h2>Chopsticks</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />

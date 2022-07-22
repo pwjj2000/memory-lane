@@ -4,7 +4,7 @@ function ChopsticksNewGame() {
     const history = useHistory()
 
     return (
-        <div className="Chopsticks">
+        <div className="Chopsticks" title='ChopsticksNewGame'>
             <img src="./Chopsticks logo.png" className ='new-game-menu' alt="Chopsticks Logo"/>
             <br/>
             <br/>

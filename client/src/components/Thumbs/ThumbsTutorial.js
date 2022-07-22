@@ -6,7 +6,7 @@ function ThumbsTutorial() {
     const history = useHistory();
 
     return (
-        <div>
+        <div title='ThumbsTutorial'>
             <h2>Thumbs Tutorial</h2>
             <div className="tutorial-game-logo">
                 <img src="./thumbs logo.png" alt="Thumbs Logo"/>

@@ -1,6 +1,6 @@
 import { supabase } from "../../supabase";
 import { useState, useEffect } from 'react'
-import { useHistory, Link } from 'react-router-dom';
+import {  BrowserRouter as Router, useHistory, Link } from 'react-router-dom';
 
 function ZhaLeaderboard() {
     const [leaderboard, setLeaderboard] = useState(null)
@@ -34,9 +34,9 @@ function ZhaLeaderboard() {
                     return (
                         <section className="leaderboard">
                             <div className="leaderboard-header">
-                                <p><img src="./rank.png"/></p>
-                                <p><img src="./email.png"/></p>
-                                <p><img src="./score.png"/></p>
+                                <p><img src="./rank.png" alt="Rank"/></p>
+                                <p><img src="./email.png" alt="Email"/></p>
+                                <p><img src="./score.png" alt="Score"/></p>
                             </div>
                             <ul className="leaderboard-list">
                                 <li className='row'>
@@ -74,37 +74,39 @@ function ZhaLeaderboard() {
     }
     
     return (
-        <>
+        <div title="ZhaLeaderboard">
             <button onClick={() => history.push('/zha')} className="hidden-button">
                 <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <div className="nav-leaderboard">
             <ul className="nav-buttons">
+                <Router>
                     <li className="nav-button">
                         <Link className="link" to='/overall-leaderboard'>
-                            <img src="./overall logo.png" className="leaderboard-overall-button"/>
+                            <img src="./overall logo.png" className="leaderboard-overall-button" alt="Overall Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/zha-leaderboard'>
-                            <img src="./zha logo.png" className="leaderboard-zha-button"/>
+                            <img src="./zha logo.png" className="leaderboard-zha-button" alt="Zha Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/chopsticks-leaderboard'>
-                            <img src="./Chopsticks logo.png" className="leaderboard-zha-button"/>
+                            <img src="./Chopsticks logo.png" className="leaderboard-zha-button" alt="Chopsticks Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/thumbs-leaderboard'>
-                            <img src="./thumbs logo.png" className="leaderboard-zha-button" />
+                            <img src="./thumbs logo.png" className="leaderboard-zha-button" alt="Thumbs Leaderboard"/>
                         </Link>
                     </li>
-                </ul>
+                </Router>
+            </ul>
             </div>
             <br/>
             <div>
-                <img src="./zha logo.png" className="leaderboard-game-logo"/>
+                <img src="./zha logo.png" className="leaderboard-game-logo" alt="Zha Logo"/>
                 <h2>Zha Leaderboard</h2>
                 <br/>
             </div>
@@ -117,15 +119,15 @@ function ZhaLeaderboard() {
             <div className="leaderboard-your-ranking">
             <section className="leaderboard">
                 <div className="leaderboard-header">
-                    <p><img src="./rank.png"/></p>
-                    <p><img src="./email.png"/></p>
-                    <p><img src="./score.png"/></p>
+                    <p><img src="./rank.png" alt="Rank"/></p>
+                    <p><img src="./email.png" alt="Email"/></p>
+                    <p><img src="./score.png" alt="Score"/></p>
                 </div>
                 <ul className="leaderboard-list">{leaderboard}</ul>
             </section>
             </div>
             
-        </>
+        </div>
     )
 
 

@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/Auth'
 import '../styles.css'
 import React from 'react'
 
-export function Dashboard() {
+export default function Dashboard() {
     const { user, signOut } = useAuth()
     const history = useHistory()
 
@@ -13,7 +13,7 @@ export function Dashboard() {
     }
   
     return (
-      <div className='dashboard'>
+      <div className='dashboard' title='Dashboard'>
         <h3>Welcome, {user?.email}!</h3>
         <div className='games-logos'>
             <button >

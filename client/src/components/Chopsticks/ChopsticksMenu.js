@@ -5,7 +5,7 @@ import React from 'react'
 export default function ChopsticksMenu() {
     const history = useHistory();
     return (
-        <div>
+        <div title='ChopsticksMenu'>
             <img src='./Chopsticks logo.png' className='menu-logo' alt="Chopsticks Logo"/>
             <h2>Chopsticks</h2>
             <ul className='menu'>

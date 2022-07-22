@@ -15,7 +15,7 @@ function ZhaJoinRoom() {
     }
 
     return (
-        <div className="Zha">
+        <div className="Zha" title="ZhaJoinRoom">
             <h2>Zha</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />

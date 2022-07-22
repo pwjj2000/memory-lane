@@ -27,7 +27,7 @@ export function Signup() {
   }
 
   return (
-    <>
+    <div title='Signup'>
       <form onSubmit={handleSubmit}>
         <label htmlFor="input-email">Email</label>
         <input id="input-email" type="email" ref={emailRef} />
@@ -43,6 +43,6 @@ export function Signup() {
       <p>
         Already have an account? <Link to="/login">Log In</Link>
       </p>
-    </>
+    </div>
   )
 }

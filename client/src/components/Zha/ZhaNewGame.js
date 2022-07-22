@@ -4,7 +4,7 @@ function ZhaNewGame() {
     const history = useHistory()
 
     return (
-        <div className="Zha">
+        <div className="Zha" title="ZhaNewGame">
             <img src="./zha logo.png" className="new-game-menu" alt="Zha Logo"/>
             <br/>
             <br/>
