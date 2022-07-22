@@ -75,46 +75,46 @@ function ZhaLeaderboard() {
     
     return (
         <>
-            <button onClick={() => history.push('/zha')} class="hidden-button">
-                <img src="./back icon.png" class="backbutton" alt="Back"/>
+            <button onClick={() => history.push('/zha')} className="hidden-button">
+                <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <div className="nav-leaderboard">
             <ul className="nav-buttons">
                     <li className="nav-button">
                         <Link className="link" to='/overall-leaderboard'>
-                            <img src="./overall logo.png" class="leaderboard-overall-button"/>
+                            <img src="./overall logo.png" className="leaderboard-overall-button"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/zha-leaderboard'>
-                            <img src="./zha logo.png" class="leaderboard-zha-button"/>
+                            <img src="./zha logo.png" className="leaderboard-zha-button"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/chopsticks-leaderboard'>
-                            <img src="./Chopsticks logo.png" class="leaderboard-zha-button"/>
+                            <img src="./Chopsticks logo.png" className="leaderboard-zha-button"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/thumbs-leaderboard'>
-                            <img src="./thumbs logo.png" class="leaderboard-zha-button" />
+                            <img src="./thumbs logo.png" className="leaderboard-zha-button" />
                         </Link>
                     </li>
                 </ul>
             </div>
             <br/>
             <div>
-                <img src="./zha logo.png" class="leaderboard-game-logo"/>
+                <img src="./zha logo.png" className="leaderboard-game-logo"/>
                 <h2>Zha Leaderboard</h2>
                 <br/>
             </div>
             <h3>Your ranking:</h3>
-            <div class= "leaderboard-your-ranking">
+            <div className= "leaderboard-your-ranking">
             {personal}
             </div>
             <br/>
             <h3>Leaderboard:</h3>
-            <div class="leaderboard-your-ranking">
+            <div className="leaderboard-your-ranking">
             <section className="leaderboard">
                 <div className="leaderboard-header">
                     <p><img src="./rank.png"/></p>

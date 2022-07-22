@@ -188,7 +188,7 @@ function ChopsticksGame() {
         socket.on("cs-end", (data) => {
             setAttacker(false)
             const winner = data.player
-            const winMessage = "Player " + winner + " wins. Returning to Create/Join Room..."
+            const winMessage = "Player " + winner + " wins. Returning to Create/Join Room in 10s..."
             setReceived(winMessage)
             setEnd(true)
             if (player === 1 && winner === 1) {
@@ -197,7 +197,7 @@ function ChopsticksGame() {
             }
             setTimeout(() => {
                 history.push('chopsticks-new-game')
-            }, 5000)
+            }, 10000)
         })
 
         return () => {
@@ -265,8 +265,8 @@ function ChopsticksGame() {
         } else {
             return (
                 <>
-                    <button onClick={handleConfirm} class="hidden-button">
-                        <img src="./confirm.png" class="confirm-button"/>
+                    <button onClick={handleConfirm} className="hidden-button">
+                        <img src="./confirm.png" className="confirm-button" alt="Confirm"/>
                     </button>
                 </>
             )
@@ -277,8 +277,8 @@ function ChopsticksGame() {
         return (
             <>
             <br/>
-                <button onClick={handleBack} class="hidden-button">
-                    <img src="back icon.png" class="backbutton"/>
+                <button onClick={handleBack} className="hidden-button">
+                    <img src="back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </>
         )
@@ -299,8 +299,8 @@ function ChopsticksGame() {
     function LELButton() {
         if (showLEL) {
             return (
-                <button onClick={() => LEL()} class="hidden-button">
-                    <img src="./LEL.png"/>
+                <button onClick={() => LEL()} className="hidden-button">
+                    <img src="./LEL.png" alt="Left attacks Enemy Left"/>
                 </button>
             )
         } else {
@@ -311,8 +311,8 @@ function ChopsticksGame() {
     function LERButton() {
         if (showLER) {
             return (
-                <button onClick={() => LER()} class="hidden-button">
-                    <img src="./LER.png" class="cs-LER"/>
+                <button onClick={() => LER()} className="hidden-button">
+                    <img src="./LER.png" className="cs-LER" alt="Left attacks Enemy Right"/>
                 </button>
             )
         } else {
@@ -323,8 +323,8 @@ function ChopsticksGame() {
     function LRButton() {
         if (showLR) {
             return (
-                <button onClick={() => LR()} class="hidden-button">
-                    <img src="./LR.png" class="cs-LR"/>
+                <button onClick={() => LR()} className="hidden-button">
+                    <img src="./LR.png" className="cs-LR" alt="Left attacks Right"/>
                 </button>
             )
         } else {
@@ -335,8 +335,8 @@ function ChopsticksGame() {
     function RELButton() {
         if (showREL) {
             return (
-                <button onClick={() => REL()} class="hidden-button">
-                    <img src="./LEL.png"/>
+                <button onClick={() => REL()} className="hidden-button">
+                    <img src="./LEL.png" alt="Right attacks Enemy Left"/>
                 </button>
             )
         } else {
@@ -347,8 +347,8 @@ function ChopsticksGame() {
     function RERButton() {
         if (showRER) {
             return (
-                <button onClick={() => RER()} class="hidden-button">
-                    <img src="./LER.png" class="cs-LER"/>
+                <button onClick={() => RER()} className="hidden-button">
+                    <img src="./LER.png" className="cs-LER" alt="Right attacks Enemy Right"/>
                 </button>
             )
         } else {
@@ -359,8 +359,8 @@ function ChopsticksGame() {
     function RLButton() {
         if (showRL) {
             return (
-                <button onClick={() => RL()} class="hidden-button">
-                    <img src="./RL.png" class="cs-LR" />
+                <button onClick={() => RL()} className="hidden-button">
+                    <img src="./RL.png" className="cs-LR" alt="Right attacks Left"/>
                 </button>
             )
         } else {
@@ -371,8 +371,8 @@ function ChopsticksGame() {
     function SplitButton() {
         if (showSplit) {
             return (
-                <button onClick={() => Split()} class="hidden-button">
-                    <img src="./split.png" />
+                <button onClick={() => Split()} className="hidden-button">
+                    <img src="./split.png" alt="Split"/>
                 </button>
             )
         } else {
@@ -381,12 +381,12 @@ function ChopsticksGame() {
     }
 
     function Options() {
-        if (attacker) {
+        if (!end && attacker) {
             return (
                 <div>
                     <h3>Choose an option:</h3>
                     <div className='cs-options'>
-                        <div class="cs-left">
+                        <div className="cs-left">
                         <h4>Using your left:</h4>
                         <ul>
                             <li><LELButton/></li>
@@ -395,7 +395,7 @@ function ChopsticksGame() {
                         </ul>
                         </div>
                         <br/>
-                        <div class="cs-right">
+                        <div className="cs-right">
                         <h4>Using your right:</h4>
                         <ul>
                             <li><RELButton/></li>
@@ -404,7 +404,7 @@ function ChopsticksGame() {
                         </ul>
                         </div>
                         <br/>
-                        <div class="cs-both">
+                        <div className="cs-both">
                         <h4>Using both:</h4>
                         <ul>
                             <li><SplitButton/></li>
@@ -420,47 +420,47 @@ function ChopsticksGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed && !end) {
+        if (!waiting && !error && confirmed) {
             return (
                 <>
                 <h4>Welcome,{player === 1 ? "Player 1" : "Player 2"}</h4>
-                    {attacker ? <img src="./attacking.png"/> : <img src="./defending.png" />}
+                    {attacker ? <img src="./attacking.png" alt="Attacking"/> : <img src="./defending.png" alt="Defending"/>}
                     <br/>
-                    {attacker ?  "" : "Waiting for your opponent to make their move..."} 
+                    {(!end && attacker) ?  "" : "Waiting for your opponent to make their move..."} 
                     
                     <br/>
 
                     <div className='cs-gameboard'>
                         <h3>Gameboard:</h3>
                         <div className='your-chopsticks'>
-                            <span class="cs-box-border">{player === 1 ? <b>you:  </b> : <b>opponent:  </b>}</span>
-                            <span> {left1 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
-                            : left1 === 1 ? <img src="./one finger.png" class="cs-icon"/>
-                            : left1 === 2 ? <img src="./two finger.png" class="cs-icon"/>
-                            : left1 === 3 ? <img src="./three finger.png" class="cs-icon"/>
-                            : <img src="./four finger.png" class="cs-icon"/>}
+                            <span className="cs-box-border">{player === 1 ? <b>you:  </b> : <b>opponent:  </b>}</span>
+                            <span> {left1 === 0 ? <img src="./defeated icon.png" className="cs-icon" alt="Defeated"/> 
+                            : left1 === 1 ? <img src="./one finger.png" className="cs-icon" alt="1"/>
+                            : left1 === 2 ? <img src="./two finger.png" className="cs-icon" alt="2"/>
+                            : left1 === 3 ? <img src="./three finger.png" className="cs-icon" alt="3"/>
+                            : <img src="./four finger.png" className="cs-icon" alt="4"/>}
                             </span>
-                            <span> {right1 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
-                            : right1 === 1 ? <img src="./one finger.png" class="cs-icon"/>
-                            : right1 === 2 ? <img src="./two finger.png" class="cs-icon"/>
-                            : right1 === 3 ? <img src="./three finger.png" class="cs-icon"/>
-                            : <img src="./four finger.png" class="cs-icon"/>}
+                            <span> {right1 === 0 ? <img src="./defeated icon.png" className="cs-icon" alt="Defeated"/> 
+                            : right1 === 1 ? <img src="./one finger.png" className="cs-icon" alt="1"/>
+                            : right1 === 2 ? <img src="./two finger.png" className="cs-icon" alt="2"/>
+                            : right1 === 3 ? <img src="./three finger.png" className="cs-icon" alt="3"/>
+                            : <img src="./four finger.png" className="cs-icon" alt="4"/>}
                             </span>
                             <br/>
                         </div>
                         <div className='enemy-chopsticks'>
                             <span> {player === 2 ? <b>you: </b> : <b>opponent:</b>}</span>
-                            <span>{left2 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
-                            : left2 === 1 ? <img src="./one finger.png" class="cs-icon"/>
-                            : left2 === 2 ? <img src="./two finger.png" class="cs-icon"/>
-                            : left2 === 3 ? <img src="./three finger.png" class="cs-icon"/>
-                            : <img src="./four finger.png" class="cs-icon"/>}
+                            <span>{left2 === 0 ? <img src="./defeated icon.png" className="cs-icon" alt="Defeated"/> 
+                            : left2 === 1 ? <img src="./one finger.png" className="cs-icon" alt="1"/>
+                            : left2 === 2 ? <img src="./two finger.png" className="cs-icon" alt="2"/>
+                            : left2 === 3 ? <img src="./three finger.png" className="cs-icon" alt="3"/>
+                            : <img src="./four finger.png" className="cs-icon" alt="4"/>}
                             </span>
-                            <span> {right2 === 0 ? <img src="./defeated icon.png" class="cs-icon"/> 
-                            : right2 === 1 ? <img src="./one finger.png" class="cs-icon"/>
-                            : right2 === 2 ? <img src="./two finger.png" class="cs-icon"/>
-                            : right2 === 3 ? <img src="./three finger.png" class="cs-icon"/>
-                            : <img src="./four finger.png" class="cs-icon"/>}</span>
+                            <span> {right2 === 0 ? <img src="./defeated icon.png" className="cs-icon" alt="Defeated"/> 
+                            : right2 === 1 ? <img src="./one finger.png" className="cs-icon" alt="1"/>
+                            : right2 === 2 ? <img src="./two finger.png" className="cs-icon" alt="2"/>
+                            : right2 === 3 ? <img src="./three finger.png" className="cs-icon" alt="3"/>
+                            : <img src="./four finger.png" className="cs-icon" alt="4"/>}</span>
                         </div>
                     </div>
                       

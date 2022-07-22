@@ -8,11 +8,11 @@ function ThumbsTutorial() {
     return (
         <div>
             <h2>Thumbs Tutorial</h2>
-            <div class = "tutorial-game-logo">
-                <img src="./thumbs logo.png"/>
+            <div className="tutorial-game-logo">
+                <img src="./thumbs logo.png" alt="Thumbs Logo"/>
             </div>
 
-            <div class="zha-tutorial-icon">
+            <div className="zha-tutorial-icon">
                 <h3>Objective</h3>
                 <p>The objective of the game is to guess the correct number of thumbs raised in the round twice.</p>
             </div>
@@ -20,7 +20,7 @@ function ThumbsTutorial() {
             <div>
                 <h3>Raising thumbs</h3>
                 <p>During each round, each player can decide whether or not to raise or lower their remaining thumbs.</p>
-                <img src="./raised thumb.png"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./dash.png"/>
+                <img src="./raised thumb.png" alt="Raised Thumb"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./dash.png" alt="Dash"/>
             </div>
 
             <div>
@@ -43,8 +43,8 @@ function ThumbsTutorial() {
             </div>
 
             <div>
-                <button onClick={() => history.push('/thumbs')} class='hidden-button'>
-                    <img src="./back icon.png" class="backbutton"/>
+                <button onClick={() => history.push('/thumbs')} className='hidden-button'>
+                    <img src="./back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </div>
             <br/>

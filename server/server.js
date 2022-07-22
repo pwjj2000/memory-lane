@@ -24,13 +24,13 @@ io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`)
 
     socket.on("create-room", (data) => {
-        if (data.room === "") {
+        if (data.room === "") { // Error due to no room ID inputted
             const error = "Please enter a valid Room ID";
             socket.emit("display-error", error);
-        } else if (rooms[data.room]) {
+        } else if (rooms[data.room]) { // Error due to creating an existing room
             const error = "This room already exists!";
             socket.emit("display-error", error);
-        } else {
+        } else { // No error; room created
             userConnected(socket.client.id);
             createRoom(data.room, socket.client.id, data.game);
             socket.emit("room-created", data)
@@ -39,13 +39,13 @@ io.on("connection", (socket) => {
     })
 
     socket.on("join-room", (data) => {
-        if (!rooms[data.room]) {
+        if (!rooms[data.room]) { // Error due to room ID inputted does not match any existing rooms
             const error = "This room doesn't exist";
             socket.emit("display-error", error);
-        } else if (data.game !== rooms[data.room][2]) {
+        } else if (data.game !== rooms[data.room][2]) { // Error due to joining from a different game
             const error = "This room is for a different game";
             socket.emit("display-error", error);
-        } else {
+        } else { // No error; room joined
             userConnected(socket.client.id);
             joinRoom(data.room, socket.client.id);
             socket.join(data.room)
@@ -191,17 +191,17 @@ io.on("connection", (socket) => {
     socket.on("join-random", (data) => {
         let roomID = ""
         
-        for (let id in rooms) {
+        for (let id in rooms) { // Search all rooms with one available spot
             if (rooms[id][1] === "" && data.game === rooms[id][2] ){
                 roomID = id;
                 break;
             }
         }
 
-        if (roomID === "" || roomID === undefined) {
+        if (roomID === "" || roomID === undefined) { // No available room found
             const error = "All rooms are full or none exists";
             socket.emit("display-error", error);
-        } else {
+        } else { // Random Room found and joined
             userConnected(socket.client.id);
             joinRoom(roomID, socket.client.id);
             socket.join(roomID);

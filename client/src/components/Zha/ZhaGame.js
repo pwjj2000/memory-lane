@@ -7,6 +7,7 @@ import { supabase } from '../../supabase'
 // const socket = io.connect("http://localhost:3001")
 const socket = io.connect("https://memorylane-app-complete.herokuapp.com/")
 
+
 function ZhaGame() {
     //Router Stuff
     const history = useHistory()
@@ -131,7 +132,7 @@ function ZhaGame() {
             const winner = loser === 1 ? 2 : 1
             console.log(player)
             console.log(winner)
-            const winMessage = "Player " + loser + " ran out of lives. Player " + winner + " wins. Returning to Create/Join Room..."
+            const winMessage = "Player " + loser + " ran out of lives. Player " + winner + " wins. Returning to Create/Join Room in 10s..."
             setReceived(winMessage)
             setEnd(true)
             if (player === 1 && winner === 1) {
@@ -144,7 +145,7 @@ function ZhaGame() {
             }
             setTimeout(() => {
                 history.push('zha-new-game')
-            }, 5000)
+            }, 10000)
         })
 
         return () => {
@@ -209,11 +210,11 @@ function ZhaGame() {
             return null;
         } else {
             return (
-                <>
-                    <button onClick={handleConfirm} class="hidden-button">
-                        <img src="./confirm.png" class="confirm-button"/>
+                <div title='CfmBtn'>
+                    <button onClick={handleConfirm} className="hidden-button">
+                        <img src="./confirm.png" className="confirm-button" alt="Confirm"/>
                     </button>
-                </>
+                </div>
             )
         }
     }
@@ -222,8 +223,8 @@ function ZhaGame() {
         return (
             <>
                 <br/>
-                <button onClick={handleBack} class="hidden-button">
-                    <img src="back icon.png" class="backbutton"/>
+                <button onClick={handleBack} className="hidden-button">
+                    <img src="back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </>
         )
@@ -241,69 +242,83 @@ function ZhaGame() {
         }
     }
 
-    function Game() {
-        if (!waiting && !error && confirmed && !end) {
-            return (
+    function MakeChoice() {
+        if (!end) {
+            return(
                 <>
+                    <h5>Make your choice:</h5>
+                        <div className='zha-game'>
+                            <button onClick={() => choose("Plane")} className="hidden-button">
+                                <img src='./plane icon.png' className="zha-choice-plane" alt='Plane' />
+                            </button>
+        
+                            <button onClick={() => choose("Human")} className="hidden-button">
+                                <img src='./human icon.png' className="zha-choice-human" alt='Human' />
+                            </button>
+        
+                            <button onClick={() => choose("Bomb")} className="hidden-button">
+                                <img src='./bomb icon.png' className="zha-choice-bomb" alt='Bomb' />
+                            </button>
+                        </div>
+                    
+                        <div className='my-choices'>
+                            <h5>Your choices:</h5>
+                            <span>{choice1}</span>
+                            <span>{choice2}</span>
+                        </div>
+        
+                        <br/>
+    
+                        <div>
+                            {locked ? null : <button onClick={() => submitChoices()} className="hidden-button">
+                                <img src="./lockin.png" className="zha-lockin" alt="lock in"/>
+                                </button>}
+                            {locked ? null : <button onClick={() => resetChoices()} className="hidden-button">
+                                <img src="./reset.png" className="zha-reset" alt="reset"/>
+                                </button>}
+                        </div>
+                </>
+            )
+        } else {
+            return null
+        }
+    }
+
+    function Game() {
+        if (!waiting && !error && confirmed) {
+            return (
+                <div title='ZhaGameboard'>
                 <body>
                 <div>
                 <h4>You are {player === 1 ? "Player 1" : "Player 2"}</h4>
-                {attacker ? <img src= "./attacking.png" class="zha-attacking"/> : <img src="./defending.png" class="zha-attacking"/>}
-                <div class="cs-lives">
+                {attacker 
+                    ? <img src= "./attacking.png" className="zha-attacking" alt="Attacking"/>
+                    : <img src="./defending.png" className="zha-attacking" alt="Defending"/> }
+                <div className="cs-lives">
                 <h5>Lives:</h5>
                     {player === 1 ? <b>you:</b>: <b>opponent:</b>} 
-                    {lives1 === 2 ? <img src="./two heart.png"/>
-                    : lives1 === 1 ? <img src="./heart.png"/>
+                    {lives1 === 2 ? <img src="./two heart.png" alt="Two"/>
+                    : lives1 === 1 ? <img src="./heart.png" alt="One"/>
                     : ""}
                     <br />
                     {player === 2 ? <b>you:</b> : <b>opponent:</b>} 
-                    {lives2 === 2 ? <img src="./two heart.png"/>
-                    : lives2 === 1 ? <img src="./heart.png"/>
+                    {lives2 === 2 ? <img src="./two heart.png" alt="Two"/>
+                    : lives2 === 1 ? <img src="./heart.png" alt="One"/>
                     : ""}
                     <br/>
                 </div>
                 <div>
-                    <img src="./zha legend.png" class="zha-legend"/>
+                    <img src="./zha legend.png" className="zha-legend" alt="Zha Legend"/>
                 </div>
                 </div>
                 
-                <h5>Make your choice:</h5>
-                    <div className='zha-game'>
-                        <button onClick={() => choose("Plane")} class="hidden-button">
-                            <img src='./plane icon.png' class="zha-choice-plane" alt='Plane' />
-                        </button>
-    
-                        <button onClick={() => choose("Human")} class="hidden-button">
-                            <img src='./human icon.png' class="zha-choice-human" alt='Human' />
-                        </button>
-    
-                        <button onClick={() => choose("Bomb")} class="hidden-button">
-                            <img src='./bomb icon.png' class="zha-choice-bomb" alt='Bomb' />
-                        </button>
-                    </div>
-                
-    
-                    <div className='my-choices'>
-                        <h5>Your choices:</h5>
-                        <span>{choice1}</span>
-                        <span>{choice2}</span>
-                    </div>
-    
-                    <br/>
-                    <div>
-                        {locked ? null : <button onClick={() => submitChoices()} class="hidden-button">
-                            <img src="./lockin.png" class="zha-lockin" alt="lock in"/>
-                            </button>}
-                        {locked ? null : <button onClick={() => resetChoices()} class="hidden-button">
-                            <img src="./reset.png" class="zha-reset" alt="reset"/>
-                            </button>}
-                    </div>
+                    <MakeChoice/>
 
                     <br />
                     
 
                     <h5>Result:</h5>
-                    <div class = "zha-result">
+                    <div className = "zha-result">
                      {player === 1 ? <b>you:</b> : <b>opponent:</b>}
                         <span>{chosen1A}</span>
                         <span>{chosen1B}</span>
@@ -318,7 +333,7 @@ function ZhaGame() {
                     <br/>
                     <h5>Log:</h5>
                     
-                    <div class='zha-log'>
+                    <div className='zha-log'>
                         {result1}
                         <br />
                         {result2}
@@ -333,7 +348,7 @@ function ZhaGame() {
 
                    </body>
                   
-                </>
+                </div>
             ) 
         } else {
             return null
@@ -449,7 +464,7 @@ function ZhaGame() {
     }
 
     return (
-        <>
+        <div title='ZhaGame'>
             Overall Score: {overall}
             <br />
             Zha Score: {score}
@@ -464,7 +479,7 @@ function ZhaGame() {
             </div>
             <br/>
             <ConfirmMessage />  
-            <p style={{color: "green"}}>{received}</p>
+            <p style={{color: "green"}} title="greenMessage">{received}</p>
             <p style={{color: "red"}}>{errorMessage}</p>
             <WaitMessage />
             <div>
@@ -473,7 +488,7 @@ function ZhaGame() {
             </div>
             <br/>
            <Game />
-        </>
+        </div>
     )
 }
 

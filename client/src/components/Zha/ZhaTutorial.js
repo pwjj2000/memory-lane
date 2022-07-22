@@ -8,14 +8,14 @@ function ZhaTutorial() {
     return (
         <div>
             <h2>Zha Tutorial</h2>
-            <div class = "tutorial-game-logo">
-                <img src="./zha logo.png"/>
+            <div className="tutorial-game-logo">
+                <img src="./zha logo.png" alt="Zha Logo"/>
             </div>
 
-            <div class="zha-tutorial-icon">
+            <div className="zha-tutorial-icon">
                 <h3>Objective</h3>
                 <p>The objective of the game is defeat both of your opponent's lives by choosing between 3 elements: plane, human and bomb:</p>
-                <img src="./plane icon.png"/><img src="human icon.png"/><img src="bomb icon.png"/>
+                <img src="./plane icon.png" alt="Plane icon"/><img src="human icon.png" alt="Human icon"/><img src="bomb icon.png" alt="Bomb icon"/>
             </div>
 
             <div>
@@ -49,8 +49,8 @@ function ZhaTutorial() {
             </div>
 
             <div>
-                <button onClick={() => history.push('/zha')} class='hidden-button'>
-                    <img src="./back icon.png" class="backbutton"/>
+                <button onClick={() => history.push('/zha')} className='hidden-button'>
+                    <img src="./back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </div>
             <br/>

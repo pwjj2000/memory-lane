@@ -5,7 +5,7 @@ function ChopsticksNewGame() {
 
     return (
         <div className="Chopsticks">
-            <img src="./Chopsticks logo.png" class ='new-game-menu' />
+            <img src="./Chopsticks logo.png" className ='new-game-menu' alt="Chopsticks Logo"/>
             <br/>
             <br/>
             <br/>
@@ -13,17 +13,17 @@ function ChopsticksNewGame() {
             <br/>
             <br/>
             <br/>
-            <button onClick={() => history.push('/chopsticks-create-room')} class='hidden-button'>
-                <img src='./create room transparent.png' class='create-room-button'/>
+            <button onClick={() => history.push('/chopsticks-create-room')} className='hidden-button'>
+                <img src='./create room transparent.png' className='create-room-button' alt="Create Room"/>
             </button>
-            <button onClick={() => history.push('/chopsticks-join-room')} class='hidden-button'>
-                <img src="./join room.png" class='join-room-button' />
+            <button onClick={() => history.push('/chopsticks-join-room')} className='hidden-button'>
+                <img src="./join room.png" className='join-room-button' alt="Join Room"/>
             </button>
             <br/>
             <br/>
             <br/>
-            <button onClick={() => history.push('/chopsticks')} class="hidden-button">
-            <img src="./back icon.png" class="backbutton"/>
+            <button onClick={() => history.push('/chopsticks')} className="hidden-button">
+            <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <br/>
             <br/>

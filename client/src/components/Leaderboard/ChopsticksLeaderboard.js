@@ -34,9 +34,9 @@ function ChopsticksLeaderboard() {
                     return (
                         <section className="leaderboard">
                             <div className="leaderboard-header">
-                            <p><img src="./rank.png"/></p>
-                            <p><img src="./email.png"/></p>
-                            <p><img src="./score.png"/></p>
+                            <p><img src="./rank.png" alt="Rank"/></p>
+                            <p><img src="./email.png" alt="Email"/></p>
+                            <p><img src="./score.png" alt="Score"/></p>
                             </div>
                             <ul className="leaderboard-list">
                                 <li className='row'>
@@ -75,52 +75,52 @@ function ChopsticksLeaderboard() {
     
     return (
         <>
-            <button onClick={() => history.push('/chopsticks')} class="hidden-button">
-                <img src="./back icon.png" class="backbutton" alt="Back"/>
+            <button onClick={() => history.push('/chopsticks')} className="hidden-button">
+                <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <div className="nav-leaderboard">
             <ul className="nav-buttons">
                     <li className="nav-button">
                         <Link className="link" to='/overall-leaderboard'>
-                            <img src="./overall logo.png" class="leaderboard-overall-button"/>
+                            <img src="./overall logo.png" className="leaderboard-overall-button" alt="Overall Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/zha-leaderboard'>
-                            <img src="./zha logo.png" class="leaderboard-zha-button"/>
+                            <img src="./zha logo.png" className="leaderboard-zha-button" alt="Zha Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/chopsticks-leaderboard'>
-                            <img src="./Chopsticks logo.png" class="leaderboard-zha-button"/>
+                            <img src="./Chopsticks logo.png" className="leaderboard-zha-button" alt="Chopsticks Leaderboard"/>
                         </Link>
                     </li>
                     <li className="nav-button">
                         <Link className="link" to='/thumbs-leaderboard'>
-                            <img src="./thumbs logo.png" class="leaderboard-zha-button" />
+                            <img src="./thumbs logo.png" className="leaderboard-zha-button" alt="Thumbs Leaderboard"/>
                         </Link>
                     </li>
                 </ul>
             </div>
             <br/>
             <div>
-                 <img src="./Chopsticks logo.png" class="leaderboard-game-logo"/>
+                 <img src="./Chopsticks logo.png" className="leaderboard-game-logo" alt="Chopsticks Logo"/>
                 <h2>Chopsticks Leaderboard</h2>
                 
 
             </div>
             <br/>
             <h3>Your ranking:</h3>
-            <div class="leaderboard-your-ranking">
+            <div className="leaderboard-your-ranking">
             {personal}
             </div><br/>
             <h3>Leaderboard:</h3>
-            <div class="leaderboard-your-ranking">
+            <div className="leaderboard-your-ranking">
             <section className="leaderboard">
                 <div className="leaderboard-header">
-                    <p><img src="./rank.png"/></p>
-                    <p><img src="./email.png"/></p>
-                    <p><img src="./score.png"/></p>
+                    <p><img src="./rank.png" alt="Rank"/></p>
+                    <p><img src="./email.png" alt="Email"/></p>
+                    <p><img src="./score.png" alt="Score"/></p>
                 </div>
                 <ul className="leaderboard-list">{leaderboard}</ul>
             </section>

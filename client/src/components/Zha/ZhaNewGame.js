@@ -5,7 +5,7 @@ function ZhaNewGame() {
 
     return (
         <div className="Zha">
-            <img src="./zha logo.png" class="new-game-menu"/>
+            <img src="./zha logo.png" className="new-game-menu" alt="Zha Logo"/>
             <br/>
             <br/>
             <br/>
@@ -13,17 +13,17 @@ function ZhaNewGame() {
             <br/>
             <br/>
             <br/>
-            <button class="hidden-button">
-                <img src='./create room transparent.png' class="create-room-button" alt="create room" onClick={() => history.push('/zha-create-room')}/>
+            <button className="hidden-button">
+                <img src='./create room transparent.png' className="create-room-button" alt="create room" onClick={() => history.push('/zha-create-room')}/>
             </button>
-            <button class="hidden-button" onClick={() => history.push('/zha-join-room')}>
-                <img src="./join room.png" class="join-room-button" alt="join room" />
+            <button className="hidden-button" onClick={() => history.push('/zha-join-room')}>
+                <img src="./join room.png" className="join-room-button" alt="join room" />
             </button>
             <br/>
             <br/>
             <br/>
-            <button onClick={() => history.push('/zha')} class="hidden-button">
-            <img src="./back icon.png" class="backbutton"/>
+            <button onClick={() => history.push('/zha')} className="hidden-button">
+            <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <br/>
             <br/>

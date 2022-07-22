@@ -19,19 +19,19 @@ function ThumbsJoinRoom() {
             <h2>Thumbs</h2>
             <input placeholder='Room ID' onChange={(event) => setRoom(event.target.value)}/>
             <br />
-            <button onClick={joinRoom} class="hidden-button">
-                <img src="./join.png" class="room-button"/>
+            <button onClick={joinRoom} className="hidden-button">
+                <img src="./join.png" className="room-button" alt="Join"/>
             </button>
             <br />
             <br />
             <br />
-            <button onClick={joinRandom} class="hidden-button">
-                <img src="join random.png" class="room-button" />
+            <button onClick={joinRandom} className="hidden-button">
+                <img src="join random.png" className="room-button" alt="Join Random"/>
             </button>
             <br/>
             <br />
-            <button onClick={() => history.push('/thumbs-new-game')} class="hidden-button">
-            <img src="./back icon.png" class="backbutton"/>
+            <button onClick={() => history.push('/thumbs-new-game')} className="hidden-button">
+            <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <br />
         </div>

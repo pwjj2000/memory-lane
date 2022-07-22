@@ -7,7 +7,7 @@ function ChopsticksTutorial() {
     return (
         <div>
             <h2>Chopsticks Tutorial</h2>
-            <div class = "tutorial-game-logo">
+            <div className = "tutorial-game-logo">
             <img src="./Chopsticks logo.png"/>
             </div>
 
@@ -15,13 +15,13 @@ function ChopsticksTutorial() {
                 <h3>Objective</h3>
                 <p>The objective of the game is to defeat both of your opponent's hands by "attacking" (increasing the value) of their hands while ensuring that your own hands stay alive. </p>
             </div>
-            <div class="cs-tutorial-icon">
+            <div className="cs-tutorial-icon">
                 <h3>Hands</h3>
                 <p>Each hand can take the value of 1, 2, 3 or 4 which is indicated by the number of fingers raised by each hand. Once the value of the hand reaches 5 or above, the hand is considered "defeated".</p>
                 <img src="./one finger.png"/><img src="two finger.png"/><img src="./three finger.png"/><img src = "./four finger.png"/>
             </div>
 
-            <div class ="cs-tutorial-icon">
+            <div className ="cs-tutorial-icon">
                 <h3>Gameplay</h3>
                 <p>Each player starts with both hands of value one.</p>
                 <img src="./one finger.png"/><img src="./one finger.png"/><br/>
@@ -47,8 +47,8 @@ function ChopsticksTutorial() {
             <br/>
             <br/>
             <div>
-                <button onClick={() => history.push('/chopsticks')} class='hidden-button'>
-                <img src="./back icon.png" class="backbutton"/>
+                <button onClick={() => history.push('/chopsticks')} className='hidden-button'>
+                <img src="./back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </div>
             <br/>

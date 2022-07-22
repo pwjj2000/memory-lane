@@ -6,7 +6,7 @@ function ThumbsNewGame() {
     return (
         <div className="Thumbs">
             <h2>Thumbs</h2>
-            <img src="./thumbs logo.png" class ='new-game-menu' />
+            <img src="./thumbs logo.png" className='new-game-menu' alt="Thumbs Logo"/>
             <br/>
             <br/>
             <br/>
@@ -14,17 +14,17 @@ function ThumbsNewGame() {
             <br/>
             <br/>
             <br/>
-            <button onClick={() => history.push('/thumbs-create-room')} class="hidden-button">
-            <img src='./create room transparent.png' class='create-room-button'/>
+            <button onClick={() => history.push('/thumbs-create-room')} className="hidden-button">
+            <img src='./create room transparent.png' className='create-room-button' alt="Create Room"/>
             </button>
-            <button onClick={() => history.push('/thumbs-join-room')} class="hidden-button">
-            <img src="./join room.png" class='join-room-button' />
+            <button onClick={() => history.push('/thumbs-join-room')} className="hidden-button">
+            <img src="./join room.png" className='join-room-button' alt="Join Room"/>
             </button>
             <br/>
             <br/>
             <br/>
-            <button onClick={() => history.push('/thumbs')} class="hidden-button">
-            <img src="./back icon.png" class="backbutton"/>
+            <button onClick={() => history.push('/thumbs')} className="hidden-button">
+            <img src="./back icon.png" className="backbutton" alt="Back"/>
             </button>
             <br/>
             <br/>

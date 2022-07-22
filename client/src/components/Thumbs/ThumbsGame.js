@@ -7,6 +7,7 @@ import { supabase } from '../../supabase'
 // const socket = io.connect("http://localhost:3001")
 const socket = io.connect("https://memorylane-app-complete.herokuapp.com/")
 
+
 function ThumbsGame() {
     //Router Stuff
     const history = useHistory()
@@ -92,7 +93,7 @@ function ThumbsGame() {
 
         socket.on("thumbs-end", (data) => {
             const winner = data.winner
-            const winMessage = "Player " + winner + " wins. Returning to Create/Join Room..."
+            const winMessage = "Player " + winner + " wins. Returning to Create/Join Room in 10s..."
             setReceived(winMessage)
             setEnd(true)
             if (player === 1 && winner === 1) {
@@ -105,7 +106,7 @@ function ThumbsGame() {
             }
             setTimeout(() => {
                 history.push('thumbs-new-game')
-            }, 5000)
+            }, 10000)
         })
 
         socket.on("thumbs-end-turn", (data) => {
@@ -214,8 +215,8 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={handleConfirm} class="hidden-button">
-                        <img src="./confirm.png" class="confirm-button"/>
+                    <button onClick={handleConfirm} className="hidden-button">
+                        <img src="./confirm.png" className="confirm-button" alt="Confirm"/>
                     </button>
                 </>
             )
@@ -226,8 +227,8 @@ function ThumbsGame() {
         return (
             <>
             <br/>
-               <button onClick={handleBack} class="hidden-button">
-                    <img src="back icon.png" class="backbutton"/>
+               <button onClick={handleBack} className="hidden-button">
+                    <img src="back icon.png" className="backbutton" alt="Back"/>
                 </button>
             </>
         )
@@ -251,7 +252,7 @@ function ThumbsGame() {
                 <>
                    <h5>Choose A Number:</h5>
                     <br />
-                    <div class="thumbs-your-number">
+                    <div className="thumbs-your-number">
                     Your Number: {yourNumber}
                     </div>
                     <br />
@@ -274,19 +275,19 @@ function ThumbsGame() {
 
     function ZeroButton() {
         return (
-            <button onClick={() => setYourNumber(0)} class="thumbs-option-button">zero</button>
+            <button onClick={() => setYourNumber(0)} className="thumbs-option-button">zero</button>
         )
     }
 
     function OneButton() {
         return (
-            <button onClick={() => setYourNumber(1)} class="thumbs-option-button">one</button>
+            <button onClick={() => setYourNumber(1)} className="thumbs-option-button">one</button>
         )
     }
 
     function TwoButton() {
         return (
-            <button onClick={() => setYourNumber(2)} class="thumbs-option-button">two</button>
+            <button onClick={() => setYourNumber(2)} className="thumbs-option-button">two</button>
         )
     }
 
@@ -295,7 +296,7 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(3)} class="thumbs-option-button">three</button>
+                <button onClick={() => setYourNumber(3)} className="thumbs-option-button">three</button>
             )
         }
     }
@@ -305,7 +306,7 @@ function ThumbsGame() {
             return null
         } else {
             return (
-                <button onClick={() => setYourNumber(4)} class="thumbs-option-button">four</button>
+                <button onClick={() => setYourNumber(4)} className="thumbs-option-button">four</button>
             )
         }
     }
@@ -333,11 +334,11 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={() => setChoice1("Raise")} class="hidden-button">
-                        <img src="raise thumb button.png" />
+                    <button onClick={() => setChoice1("Raise")} className="hidden-button">
+                        <img src="raise thumb button.png" alt="Raise Thumb"/>
                     </button>
-                    <button onClick={() => setChoice1("Lower")} class="hidden-button">
-                        <img src="lower button.png" class="thumbs-lower-button"/>
+                    <button onClick={() => setChoice1("Lower")} className="hidden-button">
+                        <img src="lower button.png" className="thumbs-lower-button" alt="Raise Thumb"/>
                     </button>
                 </>
             )
@@ -350,11 +351,11 @@ function ThumbsGame() {
         } else {
             return (
                 <>
-                    <button onClick={() => setChoice2("Raise")} class="hidden-button">
-                        <img src="raise thumb button.png" />
+                    <button onClick={() => setChoice2("Raise")} className="hidden-button">
+                        <img src="raise thumb button.png" alt="Raise Thumb"/>
                     </button>
-                    <button onClick={() => setChoice2("Lower")} class="hidden-button">
-                        <img src="lower button.png" class="thumbs-lower-button"/>
+                    <button onClick={() => setChoice2("Lower")} className="hidden-button">
+                        <img src="lower button.png" className="thumbs-lower-button" alt="Lower Thumb"/>
                     </button>
                 </>
             )
@@ -363,28 +364,33 @@ function ThumbsGame() {
 
 
     function ChooseSection() {
-        return (
-            <div class="thumbs-choose-section">
-                <h5>Choose options:</h5>
-                <div class = "thumbs-choose-raise">
-                <ChooseRaise />
-                <br/>
+        if (!end) {
+            return (
+                <div className="thumbs-choose-section">
+                    <h5>Choose options:</h5>
+                    <div className="thumbs-choose-raise">
+                    <ChooseRaise />
+                    <br/>
+                    </div>
+                    <div>
+                    
+                    <ChooseNumber />
+                    </div>
+                    <br/>
+                    <div className="thumbs-submit-choices">
+                            {locked ? null : <button onClick={() => submitChoices()} className="hidden-button">
+                                <img src="./lockin.png" className="zha-lockin" alt="Lock In"/>
+                            </button>}
+                            {locked ? null : <button onClick={() => resetChoices()} className="hidden-button">
+                                <img src="./reset.png" className="zha-reset" alt="Reset"/>    
+                            </button>}
+                    </div>
                 </div>
-                <div>
-                
-                <ChooseNumber />
-                </div>
-                <br/>
-                <div class="thumbs-submit-choices">
-                        {locked ? null : <button onClick={() => submitChoices()} class="hidden-button">
-                            <img src="./lockin.png" class="zha-lockin"/>
-                        </button>}
-                        {locked ? null : <button onClick={() => resetChoices()} class="hidden-button">
-                            <img src="./reset.png" class="zha-reset"/>    
-                        </button>}
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return null
+        }
+        
     }
 
     function ResultSection() {
@@ -392,36 +398,36 @@ function ThumbsGame() {
             <div>
                 <h5>Results:</h5>
 
-                <div class = "thumbs-result">
-                    Player 1  {player === 1 ? "(you)" : ""} : &nbsp;&nbsp;{thumb1A === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb1A === "Lower" ? <img src="./dash.png"/> : thumb1A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
-                    {thumb1B === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb1B === "Lower" ? <img src="./dash.png"/> : thumb1B === "DEAD" ? "DEAD" : "" }
+                <div className = "thumbs-result">
+                    Player 1  {player === 1 ? "(you)" : ""} : &nbsp;&nbsp;{thumb1A === "Raise" ? <img src="./raised thumb.png" alt="Raised Thumb"/>
+                    : thumb1A === "Lower" ? <img src="./dash.png" alt="Dash"/> : thumb1A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
+                    {thumb1B === "Raise" ? <img src="./raised thumb.png" alt="Raised Thumb"/>
+                    : thumb1B === "Lower" ? <img src="./dash.png" alt="Dash"/> : thumb1B === "DEAD" ? "DEAD" : "" }
                     
                 </div>
 
                 <div className='thumbs-result'>
-                    Player 2 {player === 2 ? "(you)" : ""} : &nbsp;&nbsp;{thumb2A === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb2A === "Lower" ? <img src="./dash.png"/> : thumb2A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
-                    {thumb2B === "Raise" ? <img src="./raised thumb.png"/>
-                    : thumb2B === "Lower" ? <img src="./dash.png"/> : thumb2B === "DEAD" ? "DEAD" : "" }  
+                    Player 2 {player === 2 ? "(you)" : ""} : &nbsp;&nbsp;{thumb2A === "Raise" ? <img src="./raised thumb.png" alt="Raised Thumb"/>
+                    : thumb2A === "Lower" ? <img src="./dash.png" alt="Dash"/> : thumb2A === "DEAD" ? "DEAD" : "" } &nbsp;&nbsp;&nbsp;
+                    {thumb2B === "Raise" ? <img src="./raised thumb.png" alt="Raised Thumb"/>
+                    : thumb2B === "Lower" ? <img src="./dash.png" alt="Dash"/> : thumb2B === "DEAD" ? "DEAD" : "" }  
                 </div>
 
                 <br/><br/><br/><br/><br/>
                 { thumbsRaised === resultNumber ?
                     <div>
-                    <div class="thumbs-raised-correct">Number of Thumbs Raised: {thumbsRaised}</div>
-                    <div class="thumbs-number-called-correct">Number Called: {resultNumber}</div>
+                    <div className="thumbs-raised-correct">Number of Thumbs Raised: {thumbsRaised}</div>
+                    <div className="thumbs-number-called-correct">Number Called: {resultNumber}</div>
                     </div>
                     :
                     <div>
-                    <div class="thumbs-raised-wrong">Number of Thumbs Raised: {thumbsRaised}</div>
-                    <div class="thumbs-number-called-wrong">Number Called: {resultNumber}</div>
+                    <div className="thumbs-raised-wrong">Number of Thumbs Raised: {thumbsRaised}</div>
+                    <div className="thumbs-number-called-wrong">Number Called: {resultNumber}</div>
                     </div>
                 }
                 <br/>
                 <h5>log:</h5>
-                <div class="zha-log">{log}</div> 
+                <div className="zha-log">{log}</div> 
                 <br/><br/>  
             </div>
         )
@@ -429,21 +435,21 @@ function ThumbsGame() {
     }
 
     function Game() {
-        if (!waiting && !error && confirmed && !end) {
+        if (!waiting && !error && confirmed) {
             return (
                 <>
                     <h4>Welcome, {player === 1 ? "Player 1" : "Player 2"}!</h4>
-                    {attacker ? <img src= "./attacking.png" class="zha-attacking"/> : <img src="./defending.png" class="zha-attacking"/>}
-                    <div class="cs-lives">
+                    {attacker ? <img src= "./attacking.png" className="zha-attacking" alt="Attacking"/> : <img src="./defending.png" className="zha-attacking" alt="Defending"/>}
+                    <div className="cs-lives">
                         <h5>Thumbs remaining:</h5>
                         {player === 1 ? <b>you:</b>: <b>opponent:</b>} 
-                        {lives1 === 2 ? <img src="./two thumb.png"/>
-                        : lives1 === 1 ? <img src="./one thumb.png"/>
+                        {lives1 === 2 ? <img src="./two thumb.png" alt="Two Thumbs"/>
+                        : lives1 === 1 ? <img src="./one thumb.png" alt="One Thumb"/>
                         : " Winner!"}
                         <br />
                         {player === 2 ? <b>you:</b> : <b>opponent:</b>} 
-                        {lives2 === 2 ? <img src="./two thumb.png"/>
-                        : lives2 === 1 ? <img src="./one thumb.png"/>
+                        {lives2 === 2 ? <img src="./two thumb.png" alt="Two Thumbs"/>
+                        : lives2 === 1 ? <img src="./one thumb.png" alt="One Thumb"/>
                         : " Winner!"}
                         <br/>
                         <br/>
