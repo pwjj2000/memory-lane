@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { Signup } from './Signup'
 import { Login } from './Login'
-import { Dashboard } from './Dashboard'
+import Dashboard from './Dashboard'
 import { PrivateRoute } from './PrivateRoute'
 import { AuthProvider } from '../contexts/Auth'
 import ZhaMenu from './Zha/ZhaMenu'

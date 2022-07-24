@@ -161,8 +161,7 @@ function ThumbsGame() {
         const { data } = await supabase
             .from('leaderboard')
             .select()
-            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
-            //supabase.auth.user().id)
+            .eq('id', supabase.auth.user().id)
         setOverall(data[0].overall)
         setScore(data[0].thumbs)
     }
@@ -171,13 +170,11 @@ function ThumbsGame() {
         const { data, error } = await supabase
             .from('leaderboard')
             .update({ overall: overall + 1 })
-            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
-            //supabase.auth.user().id) //update overall score
+            .eq('id', supabase.auth.user().id) //update overall score
         const { data1, error1 } = await supabase
             .from('leaderboard')
             .update({ thumbs: score + 1 })
-            .eq('id', "e49996ae-1dae-4b51-a7ac-ed20ccf3f9a8")
-            //supabase.auth.user().id) //update zha score
+            .eq('id', supabase.auth.user().id) //update zha score
         setOverall(overall + 1)
         setScore(score + 1)
     }

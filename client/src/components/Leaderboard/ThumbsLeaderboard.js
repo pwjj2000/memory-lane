@@ -1,6 +1,6 @@
 import { supabase } from "../../supabase";
 import { useState, useEffect } from 'react'
-import {  BrowserRouter as Router, useHistory, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 function ThumbsLeaderboard() {
     const [leaderboard, setLeaderboard] = useState(null)
@@ -80,7 +80,6 @@ function ThumbsLeaderboard() {
             </button>
             <div className="nav-leaderboard">
             <ul className="nav-buttons">
-                <Router>
                     <li className="nav-button">
                         <Link className="link" to='/overall-leaderboard'>
                             <img src="./overall logo.png" className="leaderboard-overall-button" alt="Overall Leaderboard"/>
@@ -101,7 +100,6 @@ function ThumbsLeaderboard() {
                             <img src="./thumbs logo.png" className="leaderboard-zha-button" alt="Thumbs Leaderboard"/>
                         </Link>
                     </li>
-                </Router>
                 </ul>
             </div>
             <br/>

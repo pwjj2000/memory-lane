@@ -187,7 +187,53 @@ Being new to the software engineering scene, we had to pick up a lot of these te
 		- Will users notice that the correct option is available? **Yes**
 		- Will users associate the correct action with the result they’re trying to achieve? **Yes**
 		- After the action is performed, will users see that progress is made towards the goal? **Yes**
+- Unit Testing
+We did some unit testing through Jest for the jsdom of the website, as well as Firecamp, for the testing of rooms. For Firecamp, it is a third party app that can simulate a user and we used it against our actual website to observe whether the behaviour is the same.
+Jest:
+	| Test | Pass/Fail |
+	|--|--|
+	| Should render App | Pass |
+	| Should render Zha menu page | Pass |
+	| Should render Zha new game page | Pass |
+	| Should render Zha tutorial page | Pass |
+	| Should render Zha create room page | Pass |
+	| Should render Zha join room page | Pass |
+	| Should render Zha game page | Pass |
+	| Should render Chopsticks menu page | Pass |
+	| Should render Chopsticks new game page | Pass |
+	| Should render Chopsticks tutorial page | Pass |
+	| Should render Chopsticks create room page | Pass |
+	| Should render Chopsticks join room page | Pass |
+	| Should render Chopsticks game page | Pass |
+	| Should render Thumbs menu page | Pass |
+	| Should render Thumbs new game page | Pass |
+	| Should render Thumbs tutorial page | Pass |
+	| Should render Thumbs create room page | Pass |
+	| Should render Thumbs join room page | Pass |
+	| Should render Thumbs game page | Pass |
+	| Should render overall leaderboard | Pass |
+	| Should render Zha leaderboard | Pass |
+	| Should render Chopsticks leaderboard | Pass |
+	| Should render Thumbs leaderboard | Pass |
+	**![](https://lh6.googleusercontent.com/keILwNxGYMimhcgEc3dl0PeOD9YwEw9vu-L-pc-SFXaebiQ09F93bjqH1qWswFnYpKxTIBLM2aoQCCVPKTV6TjdwN_5fcrFGML2cIuyoV-ttTKHFNoLxzlZ3TCSjNtcUKBLa5006dKd9yhbIKQbujko)![](https://lh3.googleusercontent.com/K5IzoBk3Y1keAlHoFi723XUa6IXlFFNwIWzOCeLf6I9kyXo8Ogvri7Yi_YlKWEq93DH1dxBIjS4PdRO4tycO3tnL1SXgnKJa49MsM5jR92Js1YipowM4h3HCfasHPvWuIFWNm_Y94mkiYozbDrS0V5g)![](https://lh4.googleusercontent.com/56c3XN_4Vlydem4RwCAQ3gWh655p_3yXHirvkNSts7WZinLVmmipapJgxy0G6wLBgzUA_2JnUskr7H7wKCrZ3cZYlAe7qx4VQjAQRk2b8ZtZtkvuu-dHMtQb_r57fMttI_rWm3h_MLju-H7T_7t9wKY)![](https://lh6.googleusercontent.com/3jxuzNCjyra1XhL9ipEFb_KBmHrzoeEt22EVR_cs7c12Dd63PpV0rT91V2s1SvNVXRligBrE6meIiELxWqtBXu_LrAdyPqdXqTcM4c2ndDabhdQq6xHHgsXNUt_Egx1DtN66byv1xY-EXiqjFYGw2AM)![](https://lh5.googleusercontent.com/o6EACxSdUq6rMi9c6FXMzoFsXN08BEAeviwpNeoHBltpxorpgbol_3Tk_GxkcdOaGKeaCHtSFBAXBNAp-D-Yc94OGEF8NmsPyx0xkNuSpAJ6IbIGARrGdAuySujyxe-LGkO6DgbOvUggAHvKk2ELqEo)**
+Firecamp:
+	| Test | Pass/Fail |
+	|--|--|
+	| Create room in Zha | Pass |
+	| Join room in Zha | Pass |
+	| Join random room in Zha | Pass |
+	| Make a move in Zha | Pass |
+	| Create room in Chopsticks | Pass |
+	| Join room in Chopsticks | Pass |
+	| Join random room in Chopsticks | Pass |
+	| Make a move in Chopsticks | Pass |
+	| Create room in Thumbs | Pass |
+	| Join room in Thumbs | Pass |
+	| Join random room in Thumbs | Pass |
+	| Make a move in Thumbs | Pass |
 
+Firecamp testing video:
+[https://drive.google.com/file/d/1KsBDR_FPwXQBvrhi5K6A0yeJ_N0beFUa/view?usp=sharing](https://drive.google.com/file/d/1KsBDR_FPwXQBvrhi5K6A0yeJ_N0beFUa/view?usp=sharing)
 ## Software Engineering Principles
 - Error Catching
 	- Login/Signup
@@ -205,6 +251,7 @@ Being new to the software engineering scene, we had to pick up a lot of these te
 - Github Version Control
 We stored our project in a Github repository for tracking and management purposes. In addition, we communicate with each other via text prior to making new pushes so that we are both aware when there are new changes.
 We mostly used basic commands such as git clone, add, commit, push.
+In addition, we used branching during our testing process so that the modification of code during testing will not interfere with our master code
 - Clear Distinction of Roles and Responsibilities
 To minimise conflicts with our coding process, we clearly defined our roles and responsibilities beforehand.
 One of us dealt with the frontend and design (Nicholas) while the other dealt with the backend and database.
