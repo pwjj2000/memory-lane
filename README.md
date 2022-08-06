@@ -2,7 +2,7 @@
 # MemoryLane
 
 ## Proposed Level of Achievement
-Project Gemini
+Project Apollo
 
 ## Motivation
 In this day and age, technology and social media have taken over the driver’s seat when it comes to entertainment. The local childhood games that brought us countless hours of amusement in the past are slowly becoming a distant memory. Furthermore, in the Covid-19 pandemic where face-to-face interaction is limited, it is much harder to compete in “hand games” like we used to.
@@ -313,3 +313,22 @@ Here is a brief overview of our application design with some description of each
 	- 5 - 11 July: Testing of thumbs game and implementation of leaderboard
 	- 12 - 18 July: Integrating multiplayer feature and leaderboard across all games
 	- 19 - 25 July: Testing and debugging
+
+**Credits**
+We would like to acknowledge the following sources where we have referenced code from:
+
+-   [Ruan Martinelli - Authentication with Supabase and React](https://ruanmartinelli.com/posts/supabase-authentication-react)
+    
+
+  
+
+From this tutorial, the key things we learnt are how to use Supabase for signing up/in/out, and also creating a Private Route such that other pages in the website can only be accessed only when the user is logged in.
+
+  
+
+-   [Coding Expert - Rock Paper Scissors Multiplayer Game](https://www.youtube.com/playlist?list=PLhbZWg5iN5xUVrNZh3Jwou19lnnqCHczK)
+    
+
+  
+
+From this tutorial, we learnt to set up a game server, as well as rooms for players to play the games which we adapted for our games.

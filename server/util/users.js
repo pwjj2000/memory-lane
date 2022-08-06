@@ -20,12 +20,6 @@ const userConnected = (userId) => {
     connectedUsers[userId] = true;
 }
 
-const makeMove = (roomId, player, choice) => {
-    if(choices[roomId]){
-        choices[roomId][player - 1] = choice;
-    }
-}
-
 const zhaMakeMove = (choice1, choice2, player, room) => {
     if (choices[room]) {
         if (player === 1) {// Store Player 1 choices
@@ -54,4 +48,4 @@ const thumbsMakeMove = (choice1, choice2, player, room, number) => {
 }
 
 
-module.exports = {connectedUsers, initializeChoices, initializeChoicesAlt, userConnected, makeMove, zhaMakeMove, thumbsMakeMove, choices};
+module.exports = {connectedUsers, initializeChoices, initializeChoicesAlt, userConnected, zhaMakeMove, thumbsMakeMove, choices};
